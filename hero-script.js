@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       e.stopPropagation();
       console.log("Theme toggle clicked!");
-      
+
       document.body.classList.toggle("light-mode");
       updateThemeIcon();
-      
+
       // Save preference
       const isLightMode = document.body.classList.contains("light-mode");
       localStorage.setItem("theme", isLightMode ? "light" : "dark");
-      
+
       // Sync with main theme toggle if it exists
       const mainThemeToggle = document.getElementById("themeToggle");
       if (mainThemeToggle) {
@@ -39,12 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Also add touch event for mobile
-    newToggle.addEventListener("touchend", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      this.click();
-    });
+    // Touch events handled by touch-interaction.js (unified handler)
 
     // Initialize the button state
     updateThemeIcon();
@@ -196,13 +191,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Trigger any theme change event
       window.dispatchEvent(new CustomEvent('themeChange', { detail: { theme: newTheme } }));
     });
-    
-    // Mobile touch support
-    newButton.addEventListener("touchend", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      this.click();
-    });
+
+    // Touch events handled by touch-interaction.js (unified handler)
   });
   
   console.log("Hero script loaded successfully!");

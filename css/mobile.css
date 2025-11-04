@@ -1,5 +1,16 @@
 /* Mobile-first overrides for the landing experience */
 @media (max-width: 768px) {
+  /* Touch interaction optimizations */
+  * {
+    touch-action: manipulation;
+  }
+
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
   html,
   body {
     width: 100%;
@@ -33,10 +44,6 @@
 
   .hamburger-menu {
     display: flex;
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
     width: 44px;
     height: 44px;
     border-radius: 10px;
@@ -326,7 +333,7 @@
   .token-info,
   .token-details,
   .sever-token-section {
-    background: rgba(0, 0, 0, 0.22) !important;
+    background: rgba(0, 0, 0, 0.22);
   }
 
   /* Battery & Fund components - semi-transparent */
@@ -334,22 +341,22 @@
   .flex-fund-container,
   .fund-panel,
   .battery-panel {
-    background: rgba(0, 0, 0, 0.22) !important;
+    background: rgba(0, 0, 0, 0.22);
   }
 
   /* Financial components - semi-transparent */
   .snapshot-card,
   .financial-card,
   .metric-card {
-    background: rgba(0, 0, 0, 0.22) !important;
+    background: rgba(0, 0, 0, 0.22);
   }
 
   /* Keep card borders but make backgrounds see-through */
   .card,
   .panel,
   .info-card {
-    background: rgba(0, 0, 0, 0.22) !important;
-    backdrop-filter: blur(5px) !important;
+    background: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(5px);
   }
 }
 
@@ -392,7 +399,7 @@
   .token-info,
   .token-details,
   .sever-token-section {
-    background: rgba(0, 0, 0, 0.3) !important;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   /* Battery & Fund components - semi-transparent */
@@ -400,35 +407,35 @@
   .flex-fund-container,
   .fund-panel,
   .battery-panel {
-    background: rgba(0, 0, 0, 0.3) !important;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   /* Financial components - semi-transparent */
   .snapshot-card,
   .financial-card,
   .metric-card {
-    background: rgba(0, 0, 0, 0.3) !important;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   /* Keep card borders but make backgrounds see-through */
   .card,
   .panel,
   .info-card {
-    background: rgba(0, 0, 0, 0.3) !important;
-    backdrop-filter: blur(5px) !important;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
   }
 }
 
 /* ==========================================
    LANDSCAPE MOBILE ORIENTATION
 ========================================== */
-@media (max-width: 900px) and (orientation: landscape) {
+@media (max-width: 768px) and (orientation: landscape) {
   #navbar {
-    padding: 8px 0 !important;
+    padding: 8px 0;
   }
 
   .nav-menu {
-    max-height: 60vh !important;
-    overflow-y: auto !important;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 }

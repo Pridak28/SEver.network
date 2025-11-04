@@ -415,16 +415,8 @@ body.light-mode textarea:focus {
   color: var(--accent-color);
 }
 
+/* Hamburger menu - hidden by default, shown on mobile via mobile.css */
 .hamburger-menu {
-  display: none;
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--accent-color);
   display: none;
   align-items: center;
   justify-content: center;
@@ -432,6 +424,7 @@ body.light-mode textarea:focus {
   transition: all 0.3s ease;
   color: var(--accent-color);
   background: transparent;
+  border: 1px solid var(--accent-color);
 }
 
 .hamburger-menu:hover,
@@ -444,10 +437,11 @@ body.light-mode textarea:focus {
   pointer-events: none;
 }
 
-/* Mobile navigation moved to css/mobile.css to avoid conflicts */
-@media (max-width: 900px) {
-  /* All navigation rules handled by mobile.css */
-}
+/* MOBILE STYLES
+ * Primary breakpoint: 768px (tablets and phones)
+ * All mobile-specific styles are in css/mobile.css to avoid conflicts
+ * JavaScript also uses 768px for mobile detection (script-2.js:637)
+ */
 
 /* Hero Section */
 .hero-section,
@@ -3556,16 +3550,16 @@ body.theme-white .progress-bar::after {
 @media screen and (max-width: 768px) {
   /* Roadmap vertical line */
   .roadmap-timeline {
-    border-left: none !important;
-    background: none !important;
+    border-left: none;
+    background: none;
   }
   .phase-connector,
   .connector-line {
-    display: none !important;
+    display: none;
   }
   .connector-dot {
-    box-shadow: none !important;
-    background: var(--accent-color) !important;
+    box-shadow: none;
+    background: var(--accent-color);
   }
 
   /* Financial Snapshot: remove vertical lines if any */
@@ -3594,19 +3588,15 @@ body.theme-white .progress-bar::after {
 }
 
 /* --- Mobile layout tuning --- */
+/* Mobile layout adjustments - see css/mobile.css for navigation and touch styles */
 @media screen and (max-width: 768px) {
-  html,
-  body {
-    width: 100% !important;
-    min-width: 0 !important;
-    overflow-x: hidden !important;
-  }
+  /* html/body rules handled in css/mobile.css */
 
   .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 70px auto 30px !important;
-    padding: 0 16px !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 70px auto 30px;
+    padding: 0 16px;
     box-sizing: border-box;
   }
 

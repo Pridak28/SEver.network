@@ -543,18 +543,12 @@ function initThemeToggle() {
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener("click", toggleTheme);
-    themeToggleBtn.addEventListener("touchend", function(e) {
-      e.preventDefault();
-      toggleTheme();
-    });
+    // Touch events handled by touch-interaction.js (unified handler)
   }
 
   if (profileThemeToggleBtn) {
     profileThemeToggleBtn.addEventListener("click", toggleTheme);
-    profileThemeToggleBtn.addEventListener("touchend", function(e) {
-      e.preventDefault();
-      toggleTheme();
-    });
+    // Touch events handled by touch-interaction.js (unified handler)
   }
 
   // Check saved theme preference on load
@@ -640,7 +634,7 @@ function initMobileNavigation() {
     return;
   }
 
-  const isMobileView = () => window.innerWidth <= 900;
+  const isMobileView = () => window.innerWidth <= 768;
 
   const syncMenuVisibility = () => {
     if (isMobileView()) {
