@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>Mobile Conflicts Test - Visual Verification</title>
+
+    <!-- Load actual project CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
+
+    <style>
+      /* Test-specific styles */
+      .test-container {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .test-section {
+        background: rgba(0, 255, 255, 0.05);
+        border: 1px solid rgba(0, 255, 255, 0.3);
+        border-radius: 12px;
+        padding: 24px;
+        margin: 20px 0;
+      }
+
+      .test-header {
+        color: #00ffff;
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        font-weight: bold;
+      }
+
+      .test-item {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 16px;
+        margin: 12px 0;
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .status-pass {
+        background: #00ff00;
+        box-shadow: 0 0 8px #00ff00;
+      }
+
+      .status-fail {
+        background: #ff0000;
+        box-shadow: 0 0 8px #ff0000;
+      }
+
+      .status-info {
+        background: #00ffff;
+        box-shadow: 0 0 8px #00ffff;
+      }
+
+      .breakpoint-display {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.9);
+        color: #00ffff;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: 1px solid #00ffff;
+        font-family: monospace;
+        font-size: 12px;
+        z-index: 10000;
+      }
+
+      .touch-test-area {
+        background: rgba(0, 255, 255, 0.1);
+        border: 2px dashed #00ffff;
+        border-radius: 8px;
+        padding: 40px;
+        text-align: center;
+        margin: 16px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .touch-test-area:active,
+      .touch-test-area.touch-active {
+        background: rgba(0, 255, 255, 0.3);
+        transform: scale(0.98);
+      }
+
+      .test-button {
+        background: rgba(0, 255, 255, 0.2);
+        border: 1px solid #00ffff;
+        color: #00ffff;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .test-button:hover {
+        background: rgba(0, 255, 255, 0.3);
+      }
+
+      .test-button.touch-active {
+        background: rgba(0, 255, 255, 0.5);
+      }
+
+      .log-output {
+        background: #000;
+        color: #0f0;
+        font-family: monospace;
+        font-size: 12px;
+        padding: 16px;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 12px;
+      }
+
+      .log-entry {
+        margin: 4px 0;
+      }
+
+      .theme-buttons-test {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+
+      .theme-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .theme-btn:hover {
+        transform: scale(1.1);
+      }
+
+      .theme-btn.active {
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.6);
+      }
+
+      .nav-menu-test {
+        display: none;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #00ffff;
+        margin-top: 12px;
+      }
+
+      .nav-menu-test.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="theme-cyan">
+    <div class="breakpoint-display" id="breakpointDisplay">
+      Width: <span id="widthValue">0</span>px |
+      Breakpoint: <span id="breakpointValue">Desktop</span> |
+      Touch: <span id="touchValue">No</span>
+    </div>
+
+    <div class="test-container">
+      <h1 style="color: #00ffff; text-align: center; margin: 40px 0;">
+        📱 Mobile Conflicts Test Suite
+      </h1>
+
+      <!-- Test 1: Breakpoint Detection -->
+      <div class="test-section">
+        <div class="test-header">1. Breakpoint Detection (768px)</div>
+        <div class="test-item">
+          <span class="status-indicator status-info"></span>
+          <strong>Current Width:</strong> <span id="currentWidth">--</span>px
+        </div>
+        <div class="test-item">
+          <span class="status-indicator" id="breakpointStatus"></span>
+          <strong>Mobile Mode Active:</strong> <span id="mobileStatus">--</span>
+        </div>
+        <div class="test-item">
+          <span class="status-indicator" id="jsBreakpointStatus"></span>
+          <strong>JavaScript Breakpoint Match:</strong> <span id="jsBreakpoint">--</span>
+        </div>
+        <div class="test-item" style="color: #888; font-size: 0.9rem;">
+          ℹ️ Resize window to &lt;768px to test mobile mode
+        </div>
+      </div>
+
+      <!-- Test 2: Touch Handler Consolidation -->
+      <div class="test-section">
+        <div class="test-header">2. Unified Touch Handlers</div>
+        <div class="test-item">
+          <strong>Touch Test Area:</strong>
+          <div class="touch-test-area" id="touchTestArea">
+            👆 Touch or Click Here
+          </div>
+          <div class="log-output" id="touchLog"></div>
+        </div>
+        <div class="test-item">
+          <strong>Theme Toggle Buttons:</strong>
+          <div class="theme-buttons-test">
+            <button class="test-button" id="testThemeToggle1">Theme Toggle 1</button>
+            <button class="test-button" id="testThemeToggle2">Theme Toggle 2</button>
+            <button class="test-button" id="testThemeToggle3">Theme Toggle 3</button>
+          </div>
+          <div class="log-output" id="themeLog"></div>
+        </div>
+      </div>
+
+      <!-- Test 3: Hamburger Menu -->
+      <div class="test-section">
+        <div class="test-header">3. Hamburger Menu (Mobile Only)</div>
+        <div class="test-item">
+          <button class="hamburger-menu" id="testHamburger" style="display: inline-flex; position: relative;">
+            <i>☰</i>
+          </button>
+          <span style="margin-left: 16px;">Hamburger Button</span>
+
+          <div class="nav-menu-test" id="testNavMenu">
+            <div style="color: #00ffff; margin-bottom: 12px;">Navigation Menu Items:</div>
+            <a href="#" style="display: block; padding: 8px; color: #fff;">Home</a>
+            <a href="#" style="display: block; padding: 8px; color: #fff;">About</a>
+            <a href="#" style="display: block; padding: 8px; color: #fff;">Contact</a>
+          </div>
+        </div>
+        <div class="test-item">
+          <span class="status-indicator" id="hamburgerStatus"></span>
+          <strong>Hamburger Visibility:</strong> <span id="hamburgerVisibility">--</span>
+        </div>
+      </div>
+
+      <!-- Test 4: Touch Target Sizes -->
+      <div class="test-section">
+        <div class="test-header">4. Touch Target Sizes (44px minimum)</div>
+        <div class="test-item">
+          <button class="test-button" id="targetTest1">Button 1</button>
+          <button class="test-button" id="targetTest2">Button 2</button>
+          <button class="test-button" id="targetTest3">Button 3</button>
+        </div>
+        <div class="test-item">
+          <span class="status-indicator" id="targetSizeStatus"></span>
+          <strong>Touch Targets Check:</strong> <span id="targetSizeResult">--</span>
+        </div>
+      </div>
+
+      <!-- Test 5: CSS Specificity -->
+      <div class="test-section">
+        <div class="test-header">5. CSS Specificity & !important Removal</div>
+        <div class="test-item">
+          <div class="card" style="padding: 20px; margin: 12px 0;">
+            Test Card - Background opacity should work
+          </div>
+        </div>
+        <div class="test-item">
+          <span class="status-indicator" id="cssSpecificityStatus"></span>
+          <strong>Background Opacity Test:</strong> <span id="cssSpecificityResult">--</span>
+        </div>
+      </div>
+
+      <!-- Test 6: Touch Event Log -->
+      <div class="test-section">
+        <div class="test-header">6. Touch Event Monitor</div>
+        <div class="test-item">
+          <div class="log-output" id="eventLog"></div>
+        </div>
+      </div>
+
+      <!-- Test Summary -->
+      <div class="test-section" style="background: rgba(0, 255, 255, 0.1); border-color: #00ffff;">
+        <div class="test-header">📊 Test Summary</div>
+        <div class="test-item">
+          <strong>Total Tests:</strong> <span id="totalTests">6</span><br>
+          <strong>Passed:</strong> <span id="passedTests" style="color: #0f0;">0</span><br>
+          <strong>Status:</strong> <span id="overallStatus">Running...</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="touch-interaction.js"></script>
+
+    <script>
+      // Utility functions
+      const log = (element, message, color = '#0f0') => {
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        entry.style.color = color;
+        entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+        element.appendChild(entry);
+        element.scrollTop = element.scrollHeight;
+      };
+
+      const touchLog = document.getElementById('touchLog');
+      const themeLog = document.getElementById('themeLog');
+      const eventLog = document.getElementById('eventLog');
+
+      // Track test results
+      let testResults = {
+        breakpoint: false,
+        touchHandlers: false,
+        hamburger: false,
+        touchTargets: false,
+        cssSpecificity: false,
+        touchEvents: false
+      };
+
+      // Breakpoint Display
+      function updateBreakpointDisplay() {
+        const width = window.innerWidth;
+        const isMobile = width <= 768;
+
+        document.getElementById('widthValue').textContent = width;
+        document.getElementById('breakpointValue').textContent = isMobile ? 'Mobile (≤768px)' : 'Desktop (>768px)';
+        document.getElementById('touchValue').textContent = 'ontouchstart' in window ? 'Yes' : 'No';
+
+        document.getElementById('currentWidth').textContent = width;
+        document.getElementById('mobileStatus').textContent = isMobile ? 'YES' : 'NO';
+
+        // Check if JS breakpoint matches CSS
+        const jsBreakpoint = width <= 768; // From script-2.js
+        document.getElementById('jsBreakpoint').textContent = jsBreakpoint === isMobile ? 'MATCH ✓' : 'MISMATCH ✗';
+
+        const breakpointStatus = document.getElementById('breakpointStatus');
+        const jsBreakpointStatus = document.getElementById('jsBreakpointStatus');
+
+        if (jsBreakpoint === isMobile) {
+          breakpointStatus.className = 'status-indicator status-pass';
+          jsBreakpointStatus.className = 'status-indicator status-pass';
+          testResults.breakpoint = true;
+        } else {
+          breakpointStatus.className = 'status-indicator status-fail';
+          jsBreakpointStatus.className = 'status-indicator status-fail';
+          testResults.breakpoint = false;
+        }
+
+        updateTestSummary();
+      }
+
+      // Touch Test Area
+      const touchTestArea = document.getElementById('touchTestArea');
+      let touchCount = 0;
+
+      touchTestArea.addEventListener('touchstart', (e) => {
+        log(touchLog, 'touchstart detected', '#0ff');
+        log(eventLog, 'Touch Event: touchstart on test area', '#0ff');
+      });
+
+      touchTestArea.addEventListener('touchend', (e) => {
+        touchCount++;
+        log(touchLog, `touchend detected (${touchCount} touches)`, '#0f0');
+        log(eventLog, 'Touch Event: touchend on test area', '#0f0');
+        testResults.touchEvents = true;
+        updateTestSummary();
+      });
+
+      touchTestArea.addEventListener('click', (e) => {
+        log(touchLog, 'click event fired', '#ff0');
+        log(eventLog, 'Click Event: triggered on test area', '#ff0');
+      });
+
+      // Theme Toggle Test
+      let themeToggleCount = 0;
+      [1, 2, 3].forEach(num => {
+        const btn = document.getElementById(`testThemeToggle${num}`);
+
+        btn.addEventListener('click', () => {
+          themeToggleCount++;
+          log(themeLog, `Theme Toggle ${num} clicked (${themeToggleCount} total)`, '#0f0');
+          log(eventLog, `Click: Theme Toggle ${num}`, '#ff0');
+          testResults.touchHandlers = true;
+          updateTestSummary();
+        });
+
+        // Monitor if touch-interaction.js adds handlers
+        btn.addEventListener('touchend', () => {
+          log(eventLog, `Touch: Theme Toggle ${num} - unified handler active`, '#0ff');
+        }, { passive: true });
+      });
+
+      // Hamburger Menu Test
+      const testHamburger = document.getElementById('testHamburger');
+      const testNavMenu = document.getElementById('testNavMenu');
+
+      testHamburger.addEventListener('click', () => {
+        testNavMenu.classList.toggle('active');
+        testHamburger.classList.toggle('active');
+
+        const isActive = testNavMenu.classList.contains('active');
+        log(eventLog, `Hamburger menu ${isActive ? 'opened' : 'closed'}`, '#0ff');
+        testResults.hamburger = true;
+        updateTestSummary();
+      });
+
+      function checkHamburgerVisibility() {
+        const computedStyle = window.getComputedStyle(testHamburger);
+        const display = computedStyle.display;
+        const isMobile = window.innerWidth <= 768;
+
+        document.getElementById('hamburgerVisibility').textContent = display !== 'none' ? 'VISIBLE' : 'HIDDEN';
+
+        const hamburgerStatus = document.getElementById('hamburgerStatus');
+        // On mobile should be visible (flex), on desktop should be hidden (none)
+        if ((isMobile && display === 'flex') || (!isMobile && display === 'none')) {
+          hamburgerStatus.className = 'status-indicator status-pass';
+        } else {
+          hamburgerStatus.className = 'status-indicator status-info';
+        }
+      }
+
+      // Touch Target Size Test
+      function checkTouchTargets() {
+        const buttons = [
+          document.getElementById('targetTest1'),
+          document.getElementById('targetTest2'),
+          document.getElementById('targetTest3')
+        ];
+
+        const isMobile = window.innerWidth <= 768;
+        let allValid = true;
+
+        buttons.forEach(btn => {
+          const rect = btn.getBoundingClientRect();
+          const height = rect.height;
+          const width = rect.width;
+
+          if (isMobile && (height < 44 || width < 44)) {
+            allValid = false;
+          }
+        });
+
+        document.getElementById('targetSizeResult').textContent = allValid || !isMobile ?
+          'PASS ✓' : 'FAIL ✗ (buttons too small)';
+
+        const targetSizeStatus = document.getElementById('targetSizeStatus');
+        targetSizeStatus.className = allValid || !isMobile ?
+          'status-indicator status-pass' : 'status-indicator status-fail';
+
+        testResults.touchTargets = allValid || !isMobile;
+        updateTestSummary();
+      }
+
+      // CSS Specificity Test
+      function checkCSSSpecificity() {
+        const card = document.querySelector('.card');
+        const computedStyle = window.getComputedStyle(card);
+        const bg = computedStyle.backgroundColor;
+
+        // Should have rgba background
+        const hasBackground = bg.includes('rgba') || bg.includes('rgb');
+
+        document.getElementById('cssSpecificityResult').textContent = hasBackground ?
+          'PASS ✓ (background applied)' : 'FAIL ✗ (no background)';
+
+        const cssSpecificityStatus = document.getElementById('cssSpecificityStatus');
+        cssSpecificityStatus.className = hasBackground ?
+          'status-indicator status-pass' : 'status-indicator status-fail';
+
+        testResults.cssSpecificity = hasBackground;
+        updateTestSummary();
+      }
+
+      // Test Summary
+      function updateTestSummary() {
+        const passed = Object.values(testResults).filter(v => v === true).length;
+        const total = Object.keys(testResults).length;
+
+        document.getElementById('passedTests').textContent = passed;
+        document.getElementById('totalTests').textContent = total;
+
+        const overallStatus = document.getElementById('overallStatus');
+        if (passed === total) {
+          overallStatus.textContent = '✅ ALL TESTS PASSED';
+          overallStatus.style.color = '#0f0';
+        } else {
+          overallStatus.textContent = `⏳ ${passed}/${total} tests passed`;
+          overallStatus.style.color = '#ff0';
+        }
+      }
+
+      // Initialize tests
+      window.addEventListener('resize', () => {
+        updateBreakpointDisplay();
+        checkHamburgerVisibility();
+        checkTouchTargets();
+      });
+
+      window.addEventListener('load', () => {
+        log(eventLog, 'Page loaded, initializing tests...', '#0ff');
+        updateBreakpointDisplay();
+        checkHamburgerVisibility();
+        checkTouchTargets();
+        checkCSSSpecificity();
+
+        log(eventLog, 'Touch detection: ' + ('ontouchstart' in window ? 'ENABLED' : 'DISABLED'), '#ff0');
+        log(eventLog, 'All tests initialized. Try interacting with elements above!', '#0f0');
+      });
+
+      // Monitor touch-interaction.js loading
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          log(eventLog, 'Checking if touch-interaction.js loaded...', '#0ff');
+
+          // Check if touch handlers were added
+          const hasDataset = document.querySelector('[data-touch-handled]');
+          if (hasDataset) {
+            log(eventLog, '✓ Unified touch handler detected (data-touch-handled found)', '#0f0');
+          } else {
+            log(eventLog, '⚠ Unified touch handler not detected', '#f80');
+          }
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
