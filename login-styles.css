@@ -1,0 +1,983 @@
+/* Force login‐page background & text to follow theme */
+html,
+body,
+.login-page,
+.login-container {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Connect Button - Clean Implementation */
+.connect-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--accent-color) !important;
+  color: var(--bg-color) !important;
+  font-family: var(--header-font);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.3);
+  border-radius: 2px;
+  z-index: 100; /* Ensure button is clickable */
+}
+
+/* Tech-style glowing border */
+.connect-button::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    transparent,
+    var(--accent-color)
+  );
+  background-size: 300% 300%;
+  animation: borderAnimation 4s ease infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.connect-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.connect-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.4);
+  color: var(--bg-color) !important;
+  background: var(--accent-color) !important;
+}
+
+.connect-button:hover::after {
+  opacity: 1;
+}
+
+.connect-button:active,
+.connect-button.button-clicked {
+  transform: translateY(1px) scale(0.98); /* Add scale for more feedback */
+  box-shadow: 0 1px 3px rgba(var(--accent-color-rgb), 0.2),
+    /* Slightly reduced shadow */ inset 0 1px 2px rgba(0, 0, 0, 0.3); /* Add inset shadow for pressed effect */
+  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Faster transition for click */
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Navbar version with special styling */
+.navbar-connect {
+  padding: 10px 20px;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-color: rgba(var(--accent-color-rgb), 0.6);
+  position: relative; /* Ensure positioning context */
+  z-index: 1001; /* Ensure it's above navbar's base z-index if needed */
+}
+
+/* Hero version with pulsing animation */
+.hero-connect {
+  margin: 20px auto;
+  display: block;
+  padding: 14px 32px;
+  font-size: 1.1em;
+  background: rgba(0, 0, 0, 0.7);
+  animation: buttonPulse 3s infinite alternate;
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.7);
+  }
+}
+
+/* Professional Tech Login Page Styles - Updated */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  position: relative;
+  overflow: hidden; /* Prevent scrollbars if content overflows slightly */
+}
+
+/* Enhanced Network Background - Matching Main Site */
+.tech-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000; /* Ensure dark background */
+  background-image: 
+    /* Network grid - more subtle than before */ linear-gradient(
+      to right,
+      rgba(var(--accent-color-rgb), 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(var(--accent-color-rgb), 0.04) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+  /* Remove animation from background itself */
+}
+
+/* Add network nodes overlay */
+.login-page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(var(--accent-color-rgb), 0.15) 0,
+      rgba(var(--accent-color-rgb), 0.03) 20px,
+      transparent 40px
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(var(--accent-color-rgb), 0.1) 0,
+      rgba(var(--accent-color-rgb), 0.02) 15px,
+      transparent 30px
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(var(--accent-color-rgb), 0.12) 0,
+      rgba(var(--accent-color-rgb), 0.03) 25px,
+      transparent 50px
+    ),
+    radial-gradient(
+      circle at 70% 90%,
+      rgba(var(--accent-color-rgb), 0.08) 0,
+      rgba(var(--accent-color-rgb), 0.02) 20px,
+      transparent 40px
+    );
+  background-size: 100% 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Use a pseudo-element to create the wireframe overlay effect */
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+        45deg,
+        transparent 48%,
+        rgba(var(--accent-color-rgb), 0.03) 49%,
+        rgba(var(--accent-color-rgb), 0.03) 51%,
+        transparent 52%
+      )
+      50px 50px,
+    linear-gradient(
+        -45deg,
+        transparent 48%,
+        rgba(var(--accent-color-rgb), 0.03) 49%,
+        rgba(var(--accent-color-rgb), 0.03) 51%,
+        transparent 52%
+      )
+      80px 80px;
+  background-size: 160px 160px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Enhanced Cyberpunk Cybertruck-Inspired Login Container */
+.login-container {
+  max-width: 480px;
+  width: 90%;
+  background: rgba(15, 18, 25, 0.85); /* Darker, more industrial background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Angular borders inspired by cybertruck */
+  border: none;
+  clip-path: polygon(
+    0 5px,
+    /* top-left with small flat edge */ 5px 0,
+    /* top-left angled */ calc(100% - 15px) 0,
+    /* top-right with offset */ 100% 15px,
+    /* top-right angled */ 100% calc(100% - 5px),
+    /* bottom-right with small flat edge */ calc(100% - 5px) 100%,
+    /* bottom-right angled */ 15px 100%,
+    /* bottom-left with offset */ 0 calc(100% - 15px) /* bottom-left angled */
+  );
+  border-radius: 0; /* Remove rounded corners for angular look */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(var(--accent-color-rgb), 0.2) inset,
+    /* Metallic edge highlights */ 0 0 0 1px rgba(var(--accent-color-rgb), 0.3),
+    0 0 0 2px rgba(10, 15, 30, 0.8);
+  padding: 40px;
+  position: relative;
+  z-index: 10;
+  overflow: visible;
+  background-color: var(--bg-color) !important;
+}
+
+/* Brushed metal effect top bar */
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px; /* Thicker bar */
+  background: linear-gradient(
+      to right,
+      transparent,
+      var(--accent-color),
+      transparent
+    ),
+    /* Brushed metal texture */
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 1px,
+        rgba(255, 255, 255, 0.02) 1px,
+        rgba(255, 255, 255, 0.02) 2px
+      );
+  z-index: 1;
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* Add sharper corner details */
+.login-container::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  /* Angular corner marks */
+  background-image: linear-gradient(
+      45deg,
+      transparent 48%,
+      var(--accent-color) 49%,
+      var(--accent-color) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 48%,
+      var(--accent-color) 49%,
+      var(--accent-color) 51%,
+      transparent 52%
+    );
+  background-size: 20px 20px;
+  background-position: top right;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Duplicate for all 4 corners with proper positioning */
+.login-container .corner-top-left,
+.login-container .corner-top-right,
+.login-container .corner-bottom-left,
+.login-container .corner-bottom-right {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 5;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
+}
+
+.login-container .corner-top-left {
+  top: 0;
+  left: 0;
+  border-top: 2px solid var(--accent-color);
+  border-left: 2px solid var(--accent-color);
+  border-bottom: none;
+  border-right: none;
+}
+
+.login-container .corner-top-right {
+  top: 0;
+  right: 0;
+  border-top: 2px solid var(--accent-color);
+  border-right: 2px solid var(--accent-color);
+  border-bottom: none;
+  border-left: none;
+}
+
+.login-container .corner-bottom-left {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid var(--accent-color);
+  border-left: 2px solid var(--accent-color);
+  border-top: none;
+  border-right: none;
+}
+
+.login-container .corner-bottom-right {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid var(--accent-color);
+  border-right: 2px solid var(--accent-color);
+  border-top: none;
+  border-left: none;
+}
+
+/* Tech frame around form elements */
+.login-container .form-group {
+  position: relative;
+  margin-bottom: 10px;
+  padding: 2px;
+  /* Subtle background pattern */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(var(--accent-color-rgb), 0.05),
+    transparent
+  );
+}
+
+/* Tech-blueprint styling for inputs */
+.login-container input {
+  width: 100%;
+  padding: 12px 15px 12px 12px;
+  background: 
+    /* Tech pattern */ linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(5, 10, 25, 0.4) 100%
+  );
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-family: monospace, var(--header-font);
+  letter-spacing: 1px;
+  box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.2) inset;
+  /* Angular corners */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 5px) 0,
+    100% 5px,
+    100% 100%,
+    5px 100%,
+    0 calc(100% - 5px)
+  );
+  background-color: var(--canvas-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--accent-color) !important;
+}
+
+.login-container input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid var(--accent-color);
+  animation: scanEffect 1.5s ease-in-out;
+}
+
+@keyframes scanEffect {
+  0% {
+    box-shadow: 0 0 0 rgba(var(--accent-color-rgb), 0.5) inset;
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.7) inset;
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.3) inset;
+  }
+}
+
+.auth-options {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.auth-options .connect-button {
+  flex: 1;
+  padding: 12px 15px;
+  position: relative;
+  overflow: visible;
+}
+
+.auth-options .connect-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.auth-options .connect-button::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    transparent,
+    var(--accent-color)
+  );
+  background-size: 300% 300%;
+  animation: borderAnimation 4s ease infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.invitation-code-container {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.invitation-code-container.active {
+  height: auto;
+  opacity: 1;
+  margin-top: 15px;
+}
+
+.error-message {
+  background: rgba(255, 50, 50, 0.1);
+  border: 1px solid rgba(255, 50, 50, 0.3);
+  color: #ff5050;
+  padding: 12px 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: none;
+  border-left: 3px solid #ff5050;
+  padding-left: 20px;
+  position: relative;
+}
+
+.error-message.visible {
+  display: block;
+  animation: errorFadeIn 0.3s ease;
+}
+
+.error-message::before {
+  content: "!";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff5050;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+@keyframes errorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-container p {
+  text-align: center;
+  margin-top: 25px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  position: relative;
+  padding-top: 15px;
+  font-family: monospace, sans-serif;
+  letter-spacing: 1px;
+}
+
+.login-container p::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--accent-color-rgb), 0.3),
+    transparent
+  );
+}
+
+.login-container a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0 4px;
+}
+
+.login-container a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: right;
+}
+
+.login-container a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Shake animation for form errors */
+.shake {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Tech connection lines */
+.form-group::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 1px;
+  height: 8px;
+  background: rgba(var(--accent-color-rgb), 0.5);
+}
+
+/* Tech pattern for headings */
+.login-container h1 {
+  color: var(--accent-color);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 4px;
+  padding-bottom: 15px;
+  font-family: monospace, var(--header-font);
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.7);
+  /* Additional tech styling */
+  background-image: linear-gradient(
+    to right,
+    rgba(var(--accent-color-rgb), 0.1),
+    transparent 30%,
+    transparent 70%,
+    rgba(var(--accent-color-rgb), 0.1)
+  );
+}
+
+.login-container h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--accent-color-rgb), 0.5),
+    transparent
+  );
+}
+
+/* Enhanced glitch title */
+.login-container h1.glitch-title::before,
+.login-container h1.glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.login-container h1.glitch-title::before {
+  animation: glitch-effect 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, 0);
+}
+
+.login-container h1.glitch-title::after {
+  animation: glitch-effect 3s infinite;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  transform: translate(2px, 0);
+}
+
+@keyframes glitch-effect {
+  0% {
+    text-shadow: -1px 0 rgba(var(--accent-color-rgb), 0.7);
+  }
+  25% {
+    text-shadow: 1px 0 rgba(var(--accent-color-rgb), 0.7);
+  }
+  50% {
+    text-shadow: -1px -1px rgba(var(--accent-color-rgb), 0.7);
+  }
+  75% {
+    text-shadow: 1px 1px rgba(var(--accent-color-rgb), 0.7);
+  }
+  100% {
+    text-shadow: -1px 0 rgba(var(--accent-color-rgb), 0.7);
+  }
+}
+
+/* Cyberpunk form styling */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.login-container label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: rgba(var(--accent-color-rgb), 0.9);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: monospace, var(--header-font);
+}
+
+.login-container label::before {
+  content: ">>";
+  font-family: monospace;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+/* Mobile Responsiveness for Login Page */
+@media screen and (max-width: 768px) {
+  .login-container {
+    width: 95%;
+    padding: 30px 20px;
+    max-width: 450px;
+  }
+
+  .login-container h1 {
+    font-size: 1.7rem;
+    letter-spacing: 3px;
+  }
+
+  .auth-options {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .auth-options .connect-button {
+    width: 100%;
+    padding: 14px 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-container {
+    width: 100%;
+    padding: 25px 15px;
+    margin: 0 10px;
+    max-width: 100%;
+  }
+
+  .login-container h1 {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .login-container form {
+    gap: 15px;
+  }
+
+  .login-container input {
+    padding: 10px 12px 10px 10px;
+    font-size: 14px;
+  }
+
+  .login-container label {
+    font-size: 0.8rem;
+  }
+
+  /* Adjust tech background for mobile */
+  .tech-background {
+    background-size: 30px 30px; /* Smaller grid for mobile */
+  }
+
+  /* Make sure background effects don't overflow on smaller screens */
+  .login-page::before,
+  .login-page::after {
+    background-size: 120px 120px, 150px 150px;
+  }
+}
+
+/* Fix for very small screens */
+@media screen and (max-width: 350px) {
+  .login-container {
+    padding: 20px 12px;
+  }
+
+  .login-container h1 {
+    font-size: 1.3rem;
+  }
+
+  .login-container p {
+    font-size: 0.8rem;
+  }
+}
+
+/* If there’s a login‐canvas, match its background */
+#loginCanvas {
+  background: var(--canvas-bg) !important;
+}
+
+/* Wallet Theme: Tech Neon/Logo Style */
+.wallet-theme {
+  --accent-color: #00fff7;
+  --accent-color-rgb: 0, 255, 247;
+  --logo-glow: 0 0 16px #00fff7, 0 0 32px #00fff7;
+  --logo-bg: linear-gradient(90deg, #00fff7 0%, #00bfff 100%);
+  --logo-circuit: repeating-linear-gradient(
+    90deg,
+    #00fff7 0 2px,
+    transparent 2px 20px
+  );
+  --logo-bg-dark: #0a0e13;
+  --logo-bg-light: #1a232b;
+}
+
+body.wallet-theme,
+.login-page.wallet-theme {
+  background: var(--logo-bg-dark);
+  color: #fff;
+}
+
+.login-container.wallet-theme {
+  background: var(--logo-bg-light);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 32px #00fff7cc, 0 0 8px #00fff7;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container.wallet-theme::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--logo-circuit);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glitch-title.wallet-theme {
+  color: var(--accent-color);
+  text-shadow: var(--logo-glow);
+  font-family: "Source Code Pro", monospace;
+  letter-spacing: 2px;
+  font-size: 2.1rem;
+  animation: wallet-glitch 2.5s infinite linear alternate;
+}
+
+@keyframes wallet-glitch {
+  0% {
+    text-shadow: var(--logo-glow);
+  }
+  20% {
+    text-shadow: 2px 0 #00fff7, -2px 0 #00bfff;
+  }
+  40% {
+    text-shadow: -2px 0 #00fff7, 2px 0 #00bfff;
+  }
+  60% {
+    text-shadow: 0 2px #00fff7, 0 -2px #00bfff;
+  }
+  80% {
+    text-shadow: 0 -2px #00fff7, 0 2px #00bfff;
+  }
+  100% {
+    text-shadow: var(--logo-glow);
+  }
+}
+
+.connect-button.wallet-theme {
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  box-shadow: 0 0 8px #00fff7cc;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s;
+}
+.connect-button.wallet-theme:hover {
+  background: #00bfff;
+  color: #fff;
+}
+
+/* Circuit border corners */
+.corner-top-left.wallet-theme,
+.corner-top-right.wallet-theme,
+.corner-bottom-left.wallet-theme,
+.corner-bottom-right.wallet-theme {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px #00fff7cc;
+}
+
+/* For modal overlay */
+#walletModal.wallet-theme {
+  background: rgba(10, 14, 19, 0.97);
+}
+
+/* Inputs */
+.login-container.wallet-theme input,
+.login-container.wallet-theme select,
+.login-container.wallet-theme textarea {
+  background: #10151b;
+  color: #00fff7;
+  border: 1px solid #00fff7;
+  box-shadow: 0 0 4px #00fff733;
+}
+
+.login-container.wallet-theme input:focus {
+  outline: 2px solid #00fff7;
+  background: #0a0e13;
+}
+
+/* Status and error */
+.login-status.wallet-theme {
+  color: #00fff7;
+  text-shadow: 0 0 8px #00fff7;
+}
+.error-message.wallet-theme {
+  color: #ff4d6d;
+  text-shadow: 0 0 4px #ff4d6d99;
+}
+
+/* Add a subtle animated border effect */
+.login-container.wallet-theme {
+  animation: wallet-border-glow 3s infinite alternate;
+}
+@keyframes wallet-border-glow {
+  0% {
+    box-shadow: 0 0 16px #00fff7cc, 0 0 8px #00fff7;
+  }
+  100% {
+    box-shadow: 0 0 32px #00fff7cc, 0 0 16px #00fff7;
+  }
+}
+
+/* Double tech-logo size for login page (if used) */
+.tech-logo-container {
+  max-width: 1200px !important;
+  width: 100% !important;
+  padding: 40px 0 !important;
+  margin: 0 auto !important;
+}
+.tech-logo {
+  width: 200% !important;
+  height: auto !important;
+  max-width: none !important;
+  font-size: 2em !important;
+}
+.logo-text.main-text {
+  font-size: 120px !important;
+}
+.logo-text.sub-text {
+  font-size: 36px !important;
+}
+@media screen and (max-width: 768px) {
+  .tech-logo-container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    padding: 40px 0 !important;
+  }
+  .tech-logo {
+    width: 200% !important;
+    height: auto !important;
+    max-width: none !important;
+    font-size: 2em !important;
+  }
+  .logo-text.main-text {
+    font-size: 80px !important;
+  }
+  .logo-text.sub-text {
+    font-size: 24px !important;
+  }
+}

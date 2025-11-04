@@ -1,0 +1,27 @@
+{
+  "name": "SEVER Network - Decentralized Energy Trading",
+  "short_name": "SEVER Network",
+  "description": "Decentralized Energy Trading Platform powered by blockchain technology",
+  "icons": [
+    {
+      "src": "/favicon-lettermark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#00ffff",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/"
+}

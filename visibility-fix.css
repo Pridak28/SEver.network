@@ -1,0 +1,330 @@
+/**
+ * VISIBILITY FIX FOR CHARTS AND TIMELINE
+ * Ensures all interactive elements are visible and functioning
+ */
+
+/* Ensure all sections are visible */
+section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+section.visible {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Timeline Specific Fixes */
+#timeline-visualization {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.timeline-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 200px !important;
+}
+
+.timeline-node {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  margin-bottom: 50px !important;
+}
+
+.node-content {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Chart Canvas Elements - Ensure Visibility and Proper Sizing */
+canvas {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-width: 300px !important;
+  min-height: 200px !important;
+}
+
+/* Mobile: Remove min-width to prevent horizontal scroll */
+@media (max-width: 768px) {
+  canvas {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+#energyProductionChart,
+#networkActivityChart,
+#priceHistoryChart,
+#performanceChart,
+#energyPriceChart,
+#consumptionBreakdownChart,
+#revenueChart,
+#frequencyChart,
+#marketPriceChart,
+#revenueAllocationChart {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  height: 300px !important;
+  min-height: 300px !important;
+}
+
+/* Mobile: specific chart sizing */
+@media (max-width: 768px) {
+  #energyProductionChart,
+  #networkActivityChart,
+  #priceHistoryChart,
+  #performanceChart,
+  #energyPriceChart,
+  #consumptionBreakdownChart,
+  #revenueChart,
+  #frequencyChart,
+  #marketPriceChart,
+  #revenueAllocationChart {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 250px !important;
+  }
+}
+
+/* Chart Containers - Ensure all parent containers have dimensions */
+.chart-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 350px !important;
+  height: auto !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* All divs containing canvas elements */
+div:has(> canvas) {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 300px !important;
+  width: 100% !important;
+}
+
+/* Energy price chart container specific */
+.energy-price-chart {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 300px !important;
+  height: 300px !important;
+  width: 100% !important;
+}
+
+/* Revenue chart container */
+.revenue-chart-container {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 300px !important;
+  width: 100% !important;
+}
+
+/* Dashboard Charts */
+.dashboard-panel {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Ensure panels are visible */
+.market-view,
+.trading-panel,
+.blockchain-panel {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Filter buttons should be visible */
+.timeline-filters {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.filter-btn {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Timeline track and axis */
+.timeline-track {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.timeline-axis {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Node dots */
+.node-dot {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Remove any hidden classes that might interfere */
+.hidden {
+  display: none !important;
+}
+
+/* Make sure terminal headings are visible */
+.terminal-heading {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Section descriptions */
+.section-description {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ===== BLOCKCHAIN EXPLORER VISIBILITY FIXES ===== */
+#blockchain-explorer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 600px !important;
+}
+
+.explorer-interface {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+}
+
+.explorer-controls {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.control-group {
+  display: block !important;
+  visibility: visible !important;
+  margin-bottom: 15px !important;
+}
+
+.control-group label {
+  display: block !important;
+  visibility: visible !important;
+  margin-bottom: 8px !important;
+  color: var(--accent-color) !important;
+  font-weight: bold !important;
+}
+
+.control-group select,
+.control-group input {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+}
+
+.control-actions {
+  display: flex !important;
+  visibility: visible !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.explorer-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 10px 15px !important;
+  background: transparent !important;
+  border: 1px solid var(--accent-color) !important;
+  color: var(--accent-color) !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.explorer-btn:hover {
+  background: var(--accent-color) !important;
+  color: #000 !important;
+}
+
+.explorer-viewport {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: 500px !important;
+  min-height: 500px !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 8px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#blockchain3DContainer {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.blockchain-stats {
+  display: flex !important;
+  visibility: visible !important;
+  gap: 15px !important;
+  flex-wrap: wrap !important;
+  margin-top: 20px !important;
+}
+
+.blockchain-stat,
+.explorer-stat {
+  display: flex !important;
+  visibility: visible !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 15px !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3) !important;
+}
+
+.range-slider-container {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+}
+
+.range-slider {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  margin: 10px 0 !important;
+}
+
+.range-value {
+  display: block !important;
+  visibility: visible !important;
+  text-align: center !important;
+  margin-top: 5px !important;
+  color: var(--accent-color) !important;
+}

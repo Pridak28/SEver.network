@@ -1,0 +1,105 @@
+/**
+ * BACKGROUND ANIMATION FIX
+ * Ensures canvas background is visible across ALL sections
+ */
+
+/* Force all sections to have transparent background */
+section,
+.section,
+div[class*="section"],
+.hero-section,
+.dashboard-section,
+.trading-section,
+.snapshot-section,
+.token-section,
+.features-section,
+.roadmap-section,
+.team-section,
+.contact-section,
+.footer-section,
+.about-section,
+.whitepaper-section,
+.blockchain-section,
+.battery-section,
+.flex-fund-section {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Ensure main containers are transparent */
+main,
+.main-content,
+.content-wrapper,
+#main,
+.page-wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Hero section must be completely transparent */
+#hero,
+.hero,
+.hero-container,
+.hero-content {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Cards and panels can have semi-transparent backgrounds */
+.card,
+.panel,
+.dashboard-card,
+.info-card,
+.feature-card,
+.stat-card {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Chart containers need transparent backgrounds */
+.chart-container,
+.canvas-container,
+canvas:not(#bgCanvas) {
+  background: transparent !important;
+}
+
+/* Ensure canvas is always behind everything */
+#bgCanvas,
+canvas#bgCanvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Fix for mobile - Let charts work */
+@media (max-width: 768px) {
+  /* Let mobile.css handle body background */
+  /* Let Chart.js canvases remain visible - don't hide them! */
+}
+
+/* Ensure all content layers are on top of canvas */
+section,
+.section,
+.container,
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Navigation must be above everything */
+#navbar,
+nav,
+.navbar {
+  position: fixed !important;
+  z-index: 1000 !important;
+}

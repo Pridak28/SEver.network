@@ -1,0 +1,188 @@
+/* ===== FINANCIAL SNAPSHOT - REDESIGNED TO MATCH WEBSITE STYLE ===== */
+
+/* Remove all custom cyan/neon styling from Financial Snapshot */
+#financial-snapshot {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: var(--section-padding) !important;
+  margin: 0 !important;
+  font-family: var(--header-font) !important;
+}
+
+/* Remove cyan glow from heading */
+#financial-snapshot h2.terminal-heading {
+  font-size: 2rem !important;
+  color: var(--text-color) !important;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+  border-left: none !important;
+  padding-left: 0 !important;
+  background: transparent !important;
+  /* Use standard terminal-heading styles */
+}
+
+/* Snapshot Cards Container - Match Dashboard Style */
+.snapshot-overview {
+  margin-top: 40px;
+}
+
+.snapshot-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 0;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Snapshot Cards - Match Panel Style from Rest of Site */
+.snapshot-card {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.1) !important;
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  transition: all 0.3s ease !important;
+  min-width: 0 !important;
+  flex: 1 1 250px !important;
+}
+
+.snapshot-card:hover {
+  border-color: rgba(var(--accent-color-rgb), 0.5) !important;
+  box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.15) !important;
+  transform: translateY(-2px);
+  background: rgba(var(--accent-color-rgb), 0.05) !important;
+}
+
+/* Card Icon - Match Other Sections */
+.snapshot-card .card-icon {
+  font-size: 2rem !important;
+  color: var(--accent-color) !important;
+  text-shadow: none !important;
+  margin-bottom: 8px !important;
+}
+
+/* Card Content */
+.snapshot-card .card-content {
+  width: 100%;
+}
+
+/* Metric Label - Match Spec Labels */
+.snapshot-card .metric-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 8px !important;
+  text-shadow: none !important;
+  text-transform: uppercase;
+}
+
+/* Metric Value - Match Spec Values */
+.snapshot-card .metric-value {
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+  color: var(--accent-color) !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  text-fill-color: initial !important;
+  text-shadow: none !important;
+  font-family: var(--header-font) !important;
+}
+
+/* Negative Values - Use Error Color */
+.snapshot-card .metric-value.negative {
+  color: var(--error-color) !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+
+/* Highlight Values - Use Success Color */
+.snapshot-card .metric-value.highlight {
+  color: var(--success-color) !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+
+/* Progress Bar - Match Dashboard Style */
+.snapshot-card .metric-progress {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px !important;
+  height: 6px !important;
+  margin-top: 10px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+}
+
+.snapshot-card .progress-bar {
+  height: 100% !important;
+  background: var(--accent-color) !important;
+  border-radius: 4px !important;
+  transition: width 0.7s ease !important;
+  box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Card Type Specific Styling - Subtle Accent Borders */
+.snapshot-card.revenue {
+  border-left: 3px solid var(--accent-color);
+}
+
+.snapshot-card.ebitda {
+  border-left: 3px solid var(--success-color);
+}
+
+.snapshot-card.return {
+  border-left: 3px solid var(--success-color);
+}
+
+.snapshot-card.costs,
+.snapshot-card.debt {
+  border-left: 3px solid var(--error-color);
+}
+
+.snapshot-card.equity-cash,
+.snapshot-card.investment {
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Remove any vertical lines or connectors */
+.snapshot-section .vertical-line,
+.snapshot-section .connector-line,
+.snapshot-section .connector-dot {
+  display: none !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .snapshot-cards {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  .snapshot-card {
+    flex: 1 1 100% !important;
+  }
+
+  .snapshot-card .card-icon {
+    font-size: 1.5rem !important;
+  }
+
+  .snapshot-card .metric-value {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Override any remaining custom styles */
+.energy-model-container {
+  all: unset;
+}
+
+.snapshot-section {
+  all: unset;
+}

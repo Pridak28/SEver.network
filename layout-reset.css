@@ -1,0 +1,177 @@
+/**
+ * LAYOUT RESET & Z-INDEX STACKING FIX
+ *
+ * This file ensures proper z-index layering and positioning
+ * to prevent overlapping issues during scrolling
+ */
+
+/* Reset body and html for proper scrolling */
+html {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Z-Index Stacking Order (from bottom to top):
+ * -1: Background canvas
+ *  0: Default content
+ *  1: Sections and main content
+ *  10: Containers
+ *  100: Floating elements
+ *  1000: Navbar
+ *  9500: Theme selector, system info
+ *  9999: Loading overlay
+ *  10000+: Modals, tooltips
+ */
+
+/* Background Layer (lowest) - ALWAYS FIXED */
+#bgCanvas,
+canvas#bgCanvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+/* Main Content Layer */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+#hero {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation Layer (should always be on top of content) */
+#navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+}
+
+.nav-container {
+  position: relative;
+  z-index: 1001;
+}
+
+/* Floating Elements */
+.floating-theme-selector {
+  position: fixed;
+  z-index: 9500;
+}
+
+.system-info-panel {
+  position: fixed;
+  z-index: 9500;
+}
+
+/* Loading Overlay (highest) */
+#loadingOverlay {
+  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+/* Ensure fixed elements don't cause scroll issues */
+.ticker-banner {
+  position: fixed;
+  z-index: 100;
+}
+
+.ticker-controls {
+  position: fixed;
+  z-index: 101;
+}
+
+/* Custom cursor (desktop only, should not interfere) */
+#customCursor {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* AI Assistant Section - Prevent Overlap */
+#assistant {
+  position: relative;
+  z-index: 1;
+}
+
+.assistant-interface {
+  position: relative;
+  z-index: 1;
+}
+
+.assistant-sidebar,
+.assistant-main {
+  position: relative !important;
+  z-index: 1;
+}
+
+.conversation-container,
+.assistant-response-panel {
+  position: relative;
+  z-index: 1;
+}
+
+/* Prevent layout shift during load */
+* {
+  box-sizing: border-box;
+}
+
+/* Desktop-only optimizations */
+@media (min-width: 769px) {
+  /* Allow smooth scrolling without interference */
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll on mobile */
+  html,
+  body {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Ensure navbar doesn't overlap content on mobile */
+  #navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* Add top padding to first section to account for fixed navbar */
+  section:first-of-type,
+  #hero {
+    padding-top: 80px;
+  }
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="wallet-theme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEVER NETWORK Wallet</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../login-styles.css" />
+    <link rel="stylesheet" href="../blockchain-explorer.css" />
+    <link rel="stylesheet" href="../css/blockchain-styles.css" />
+    <link rel="stylesheet" href="../css/battery-flex-fund.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body.wallet-theme {
+        min-height: 100vh;
+        background: var(--logo-bg-dark, #0a0e13);
+        color: #fff;
+        overflow-x: hidden;
+      }
+      .wallet-bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .wallet-hero {
+        text-align: center;
+        margin: 48px 0 24px 0;
+        z-index: 2;
+        position: relative;
+      }
+      .wallet-hero-logo {
+        font-family: "Source Code Pro", monospace;
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        text-shadow: 0 0 16px #00fff7, 0 0 32px #00fff7;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        animation: wallet-glitch 2.5s infinite linear alternate;
+      }
+      .wallet-hero-sub {
+        color: #00fff7;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+      .wallet-main {
+        max-width: 600px;
+        margin: 0 auto 48px auto;
+        background: var(--logo-bg-light, #1a232b);
+        border-radius: 18px;
+        box-shadow: 0 0 32px #00fff7cc, 0 0 8px #00fff7;
+        padding: 36px 28px 32px 28px;
+        position: relative;
+        z-index: 2;
+      }
+      .wallet-card {
+        background: rgba(10, 18, 25, 0.92);
+        border-radius: 12px;
+        box-shadow: 0 0 16px #00fff799;
+        padding: 24px 18px;
+        margin-bottom: 28px;
+        position: relative;
+      }
+      .wallet-card h2 {
+        color: var(--accent-color);
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        font-family: "Source Code Pro", monospace;
+      }
+      .wallet-info-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 1.08em;
+      }
+      .wallet-info-label {
+        min-width: 120px;
+        color: #00fff7;
+        font-family: monospace;
+        font-weight: 600;
+      }
+      .wallet-info-value {
+        font-family: monospace;
+        color: #fff;
+        word-break: break-all;
+      }
+      .wallet-theme-toggle {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        background: none;
+        border: none;
+        color: var(--accent-color);
+        font-size: 1.3em;
+        cursor: pointer;
+        z-index: 10;
+      }
+      @media (max-width: 700px) {
+        .wallet-main {
+          padding: 18px 4vw;
+        }
+        .wallet-card {
+          padding: 16px 6px;
+        }
+      }
+    </style>
+  </head>
+  <body class="wallet-theme">
+    <canvas id="bgCanvas" class="wallet-bg-canvas"></canvas>
+    <script src="../bg-animations/bg-theme-animator.js"></script>
+    <div
+      class="theme-selector"
+      id="themeSelector"
+      style="position: fixed; top: 18px; left: 18px; z-index: 100"
+    >
+      <button class="theme-btn neon-theme" data-theme="neon" title="Neon">
+        <span class="theme-color"></span>
+      </button>
+      <button class="theme-btn purple-theme" data-theme="purple" title="Purple">
+        <span class="theme-color"></span>
+      </button>
+      <button class="theme-btn blue-theme" data-theme="blue" title="Blue">
+        <span class="theme-color"></span>
+      </button>
+      <button class="theme-btn red-theme" data-theme="red" title="Red">
+        <span class="theme-color"></span>
+      </button>
+      <button class="theme-btn cyan-theme" data-theme="cyan" title="Cyan">
+        <span class="theme-color"></span>
+      </button>
+      <button class="theme-btn gold-theme" data-theme="gold" title="Gold">
+        <span class="theme-color"></span>
+      </button>
+      <button class="theme-btn white-theme" data-theme="white" title="White">
+        <span class="theme-color"></span>
+      </button>
+    </div>
+    <div class="wallet-hero">
+      <div class="wallet-hero-logo">SEVER NETWORK</div>
+      <div class="wallet-hero-sub">Decentralized Energy Wallet</div>
+      <button
+        class="wallet-theme-toggle"
+        id="themeToggleBtn"
+        title="Toggle Theme"
+      >
+        <i class="fas fa-adjust"></i>
+      </button>
+    </div>
+    <div class="wallet-main">
+      <div class="wallet-card" id="walletCard">
+        <h2>Your Wallet</h2>
+        <div class="wallet-info-row">
+          <span class="wallet-info-label">User:</span>
+          <span class="wallet-info-value" id="userName"></span>
+        </div>
+        <div class="wallet-info-row">
+          <span class="wallet-info-label">Address:</span>
+          <span class="wallet-info-value" id="walletAddress"></span>
+        </div>
+        <div class="wallet-info-row">
+          <span class="wallet-info-label">Private Key:</span>
+          <span class="wallet-info-value" id="walletPrivateKey"></span>
+        </div>
+        <div class="wallet-info-row">
+          <span class="wallet-info-label">Tokens:</span>
+          <span class="wallet-info-value" id="walletBalance"></span>
+        </div>
+      </div>
+      <div class="wallet-card">
+        <h2>Send Tokens</h2>
+        <input
+          id="toAddress"
+          placeholder="Recipient Address"
+          size="50"
+          class="wallet-input"
+        />
+        <input
+          id="amount"
+          placeholder="Amount"
+          type="number"
+          class="wallet-input"
+        />
+        <button id="sendButton" class="connect-button wallet-theme">
+          Send
+        </button>
+        <div id="txStatus" style="margin-top: 10px"></div>
+      </div>
+      <div class="wallet-card">
+        <h2>Refresh Balance</h2>
+        <button id="refreshBalance" class="connect-button wallet-theme">
+          Refresh
+        </button>
+        <div id="balance"></div>
+      </div>
+      <div class="wallet-card" id="adminInvitationCodes" style="display: none">
+        <h2><i class="fas fa-key"></i> Invitation Codes (Admin)</h2>
+        <div
+          id="invitationCodesList"
+          style="
+            font-family: monospace;
+            font-size: 1em;
+            color: #00fff7;
+            max-height: 220px;
+            overflow: auto;
+          "
+        ></div>
+      </div>
+    </div>
+    <script type="module">
+      import { ethers } from "https://unpkg.com/ethers@6.6.2/dist/ethers.min.js";
+      const API_BASE = "https://website-sever-netwrok.onrender.com/";
+      let wallet;
+      let user = null;
+      if (sessionStorage.getItem("walletUser")) {
+        user = JSON.parse(sessionStorage.getItem("walletUser"));
+        wallet = new ethers.Wallet(user.privateKey);
+      } else {
+        wallet = ethers.Wallet.createRandom();
+      }
+      function showWalletInfo() {
+        document.getElementById("userName").textContent =
+          user && user.username ? user.username : "-";
+        document.getElementById("walletAddress").textContent = wallet.address;
+        document.getElementById("walletPrivateKey").textContent =
+          wallet.privateKey;
+        document.getElementById("walletBalance").textContent =
+          user && user.balance !== undefined ? user.balance : "-";
+      }
+      showWalletInfo();
+      document.getElementById("refreshBalance").onclick = async () => {
+        if (!wallet) return alert("Generate or import a wallet first");
+        const res = await fetch(`${API_BASE}balance/${wallet.address}`);
+        const data = await res.json();
+        document.getElementById("walletBalance").textContent = data.balance;
+        if (user) user.balance = data.balance;
+      };
+      document.getElementById("sendButton").onclick = async () => {
+        if (!wallet) return alert("Generate or import a wallet first");
+        const to = document.getElementById("toAddress").value.trim();
+        const amount = document.getElementById("amount").value.trim();
+        if (!to || !amount) return alert("Fill recipient and amount");
+        const payload = { fromAddress: wallet.address, toAddress: to, amount };
+        const message = ethers.AbiCoder.defaultAbiCoder().encode(
+          ["address", "address", "uint256"],
+          [wallet.address, to, amount]
+        );
+        const hash = ethers.keccak256(message);
+        const signature = await wallet.signMessage(ethers.getBytes(hash));
+        payload.signature = signature;
+        document.getElementById("txStatus").textContent = "Sending...";
+        const resp = await fetch(`${API_BASE}transfer`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await resp.json();
+        if (result.error)
+          document.getElementById("txStatus").textContent =
+            "Error: " + result.error;
+        else
+          document.getElementById("txStatus").textContent =
+            "Transfer successful";
+        await document.getElementById("refreshBalance").click();
+      };
+      // Store admin password on login (if admin)
+      if (
+        user &&
+        user.username === "admin" &&
+        !sessionStorage.getItem("adminPass")
+      ) {
+        // Try to get password from login form (if available in user object)
+        if (user._adminPassword) {
+          sessionStorage.setItem("adminPass", user._adminPassword);
+        } else {
+          // Prompt once if not available
+          const pass = prompt("Enter admin password (only once per session):");
+          if (pass) sessionStorage.setItem("adminPass", pass);
+        }
+      }
+      // Admin-only: show invitation codes
+      async function showAdminInvitationCodes() {
+        if (user && user.username === "admin") {
+          const section = document.getElementById("adminInvitationCodes");
+          section.style.display = "";
+          const listDiv = document.getElementById("invitationCodesList");
+          listDiv.innerHTML = '<div style="color:#fff;">Loading...</div>';
+          let adminPass = sessionStorage.getItem("adminPass");
+          if (!adminPass) {
+            adminPass = prompt("Admin password for invitation codes:");
+            if (adminPass) sessionStorage.setItem("adminPass", adminPass);
+          }
+          try {
+            const res = await fetch(`${API_BASE}admin/invitation-codes`, {
+              headers: {
+                Authorization: "Basic " + btoa("admin:" + adminPass),
+              },
+            });
+            if (!res.ok) throw new Error("Auth failed or not admin");
+            const codes = await res.json();
+            listDiv.innerHTML = codes
+              .map(
+                (c) =>
+                  `<div class='admin-code-row'><b>${c.code}</b> <span style='color:#fff;'>${c.address}</span></div>`
+              )
+              .join("");
+          } catch (err) {
+            sessionStorage.removeItem("adminPass");
+            listDiv.innerHTML = `<span style='color:#ff4d6d;'>${err.message}</span>`;
+          }
+        }
+      }
+      showAdminInvitationCodes();
+      // Theme toggle logic
+      document.getElementById("themeToggleBtn").onclick = function () {
+        document.body.classList.toggle("light-mode");
+      };
+      // THEME SELECTOR LOGIC
+      function setTheme(theme) {
+        document.body.classList.remove(
+          ...Array.from(document.body.classList).filter((c) =>
+            c.startsWith("theme-")
+          )
+        );
+        document.body.classList.add(`theme-${theme}`);
+        localStorage.setItem("accentColor", theme);
+        // Update active button
+        document.querySelectorAll(".theme-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.theme === theme);
+        });
+      }
+      // Restore theme on load
+      (function () {
+        const saved = localStorage.getItem("accentColor");
+        if (saved) setTheme(saved);
+      })();
+      // Theme selector event listeners
+      document.querySelectorAll(".theme-btn").forEach((btn) => {
+        btn.onclick = () => setTheme(btn.dataset.theme);
+      });
+    </script>
+  </body>
+</html>

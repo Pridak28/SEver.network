@@ -1,0 +1,68 @@
+/**
+ * CHART FORCE VISIBLE - Emergency CSS to force all charts visible
+ * This overrides everything else
+ */
+
+/* Loading overlay should fade out naturally */
+#loadingOverlay.fade-out {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.5s ease-out !important;
+}
+
+/* Force ALL canvas elements visible */
+canvas {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  /* Removed fixed dimensions to let Chart.js handle sizing */
+}
+
+/* Force chart containers visible */
+.chart-container,
+.energy-price-chart,
+.revenue-chart-container,
+div[class*="chart"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 300px !important;
+  height: auto !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Force dashboard panels visible */
+.dashboard-panel {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 400px !important;
+}
+
+/* Specific chart canvases by ID */
+#energyProductionChart,
+#networkActivityChart,
+#energyPriceChart,
+#consumptionBreakdownChart,
+#revenueChart,
+#frequencyChart,
+#marketPriceChart,
+#revenueAllocationChart {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  /* Let Chart.js set dimensions dynamically */
+}
+
+/* Force parent sections visible */
+#energy-dashboard,
+#trading-simulator,
+#ai-assistant,
+#battery-flex-fund,
+#financial-snapshot {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}

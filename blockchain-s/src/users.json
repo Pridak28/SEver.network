@@ -1,0 +1,37 @@
+[
+  {
+    "username": "admin",
+    "passwordHash": "$2b$10$0NNp.X.qkmNaSzIYue1P5eLhMjLDYV.qpxYFSweSp9jJ6eBID/27e",
+    "address": "045dcd9ece985152ec5334a7fa89bc24397a7cd22be5e56c589ef5d0417247eb273d68556a41978d5b5e2978abad97afd3166517d7f47b5a7145151f8bc8a1fc1a",
+    "privateKey": "e19d2eafbfa68d712140695539436a73e6c881c07c5382ac838b1df3369ac888",
+    "code": "admin"
+  },
+  {
+    "username": "ssss2",
+    "passwordHash": "$2b$10$YmC1yRkmkJyHpFnSRnyupunmydDZvhWRleCNeHFljYwZf35v1eFr.",
+    "address": "043cc2a8246e445f850c1c2d14f605ff486fdd424dbeb43549df7022a5f4ed6db26b86d61c0de3370cc6888b4e8f7a735d658335093aa59f47857b54e0cc2c909d",
+    "privateKey": "f2414b97c4186e8af45cdfb3e7147367490fa620d3651262b6892da07517a7bd",
+    "code": null
+  },
+  {
+    "username": "sssss",
+    "passwordHash": "$2b$10$lV28.UxwbAYhjD3spy2DXuY/MpjlV4cmYHHQnnMG8Lg7m1uOdnDFe",
+    "address": "04d7c887d2f3ec0ebf64b1e673c6c0a1f56a5617a6bda9168add729aa3271e212497ec15683355dcef30e2b7d99e475f59152f4767e6b9ef34b5c242496abe900b",
+    "privateKey": "3723c9830d5fb1eea40de7605595e454f1247696f8beabcaa43376c3f5154555",
+    "code": null
+  },
+  {
+    "username": "pridak28",
+    "passwordHash": "$2b$10$maRohzwWPnfqKCyin7hglOa2GFdlc6FYPFqm.t74S9lLZyye.f8Qy",
+    "address": "040672a3079f4a3c3145b365841f3871f3a99144d45ea3240b5ed5847f27d224d033323e8fc8938919912474a1a77c3365189660e92b465073b5fc4aea3d1a7ac7",
+    "privateKey": "451f046f7c84b81f7e12a82a506ba509accc3c956476e354745c579a7a166236",
+    "code": "040672a3"
+  },
+  {
+    "username": "pridak",
+    "passwordHash": "$2b$10$uun2cS.f2rB9mjopzRAODe4iKXV9HBPz3C5CCSgvcsezWpVLErEVC",
+    "address": "04b0e44e9084bf449c59ee62eb505a3601c28f39247d341f3e4d72e0718ca7a59a96113ddde76505785e97c80354d0f6b4ebfe58655f40a438540e15ad416954ea",
+    "privateKey": "92e1799ab764f3cae3cc683f778cce5e3c9a4b859ec70bcc94e7e521ad088e42",
+    "code": null
+  }
+]

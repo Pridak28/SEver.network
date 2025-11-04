@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        body {
+            background: #000;
+            color: #0ff;
+            font-family: monospace;
+            padding: 20px;
+        }
+        .chart-container {
+            width: 80%;
+            max-width: 800px;
+            height: 400px;
+            margin: 20px auto;
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #0ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chart.js Test Page</h1>
+    <p>Testing if Chart.js loads and charts render...</p>
+
+    <div class="chart-container">
+        <h2>Revenue Streams Test</h2>
+        <canvas id="testRevenueChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Frequency Response Test</h2>
+        <canvas id="testFrequencyChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Market Price Test</h2>
+        <canvas id="testMarketChart"></canvas>
+    </div>
+
+    <script>
+        console.log('🔄 Testing Chart.js...');
+
+        if (typeof Chart === 'undefined') {
+            console.error('❌ Chart.js NOT LOADED!');
+            document.body.innerHTML += '<h2 style="color: red;">ERROR: Chart.js not loaded!</h2>';
+        } else {
+            console.log('✅ Chart.js loaded, version:', Chart.version);
+
+            // Test 1: Revenue Chart
+            const revenueCtx = document.getElementById('testRevenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [120, 150, 180, 200, 220, 250],
+                        borderColor: 'rgba(0, 255, 255, 0.8)',
+                        backgroundColor: 'rgba(0, 255, 255, 0.2)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            console.log('✅ Revenue chart created');
+
+            // Test 2: Frequency Chart
+            const freqCtx = document.getElementById('testFrequencyChart').getContext('2d');
+            new Chart(freqCtx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 50}, (_, i) => i),
+                    datasets: [{
+                        label: 'Frequency',
+                        data: Array.from({length: 50}, () => 50 + (Math.random() * 0.4 - 0.2)),
+                        borderColor: 'rgba(0, 255, 255, 0.8)',
+                        borderWidth: 2,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { min: 49.5, max: 50.5 }
+                    }
+                }
+            });
+            console.log('✅ Frequency chart created');
+
+            // Test 3: Market Price Chart
+            const marketCtx = document.getElementById('testMarketChart').getContext('2d');
+            new Chart(marketCtx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 24}, (_, i) => i + ':00'),
+                    datasets: [{
+                        label: 'Market Price',
+                        data: Array.from({length: 24}, () => 135 + (Math.random() * 60 - 30)),
+                        borderColor: 'rgba(0, 255, 255, 0.8)',
+                        backgroundColor: 'rgba(0, 255, 255, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            console.log('✅ Market price chart created');
+
+            console.log('✅ ALL CHARTS CREATED SUCCESSFULLY!');
+        }
+    </script>
+</body>
+</html>

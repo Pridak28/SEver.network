@@ -1,0 +1,66 @@
+[build]
+  publish = "/"
+  command = "echo 'Deploying site for Pridak774 at 2025-04-11 18:22:47'"
+
+# Optimize asset caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+    X-User-Info = "Pridak774-2025-04-11"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com; font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com data:; img-src 'self' data: blob:; connect-src 'self' api-inference.huggingface.co https://website-sever-netwrok.onrender.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# Cache settings optimized for mobile
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Enable HTTPS
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+# Custom redirect for user authentication simulation
+[[redirects]]
+  from = "/auth/*"
+  to = "/index.html"
+  status = 200
+  force = false
+  conditions = {User = "Pridak774"}
+
+# Add brotli compression for better mobile performance
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
+
+# Environment variables
+[build.environment]
+  SITE_UPDATED_AT = "2025-04-11 18:22:47"
+  SITE_UPDATED_BY = "Pridak774"

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEVER Network Whitepaper - Decentralized Energy Trading Platform</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/sever-token-styles.css" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="favicon-lettermark.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <style>
+        /* Whitepaper Page Specific Styles */
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Source Code Pro', monospace;
+            line-height: 1.8;
+        }
+
+        .whitepaper-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .whitepaper-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1), rgba(var(--accent-color-rgb), 0.05));
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+
+        .whitepaper-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .whitepaper-header .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .whitepaper-header .version-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .download-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            padding: 1rem 2rem;
+            background: var(--accent-color);
+            color: #000;
+            border: 2px solid var(--accent-color);
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: transparent;
+            color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.5);
+        }
+
+        .download-btn.secondary {
+            background: transparent;
+            color: var(--accent-color);
+        }
+
+        .download-btn.secondary:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
+
+        .table-of-contents {
+            background: rgba(var(--accent-color-rgb), 0.05);
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .table-of-contents h2 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .table-of-contents ol {
+            list-style: none;
+            counter-reset: section;
+            padding-left: 0;
+        }
+
+        .table-of-contents li {
+            counter-increment: section;
+            margin: 0.8rem 0;
+        }
+
+        .table-of-contents li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .table-of-contents li a:hover {
+            color: var(--accent-color);
+            background: rgba(var(--accent-color-rgb), 0.1);
+            padding-left: 1rem;
+        }
+
+        .table-of-contents li a::before {
+            content: counter(section) ". ";
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .whitepaper-content {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            border-radius: 8px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+
+        .whitepaper-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(var(--accent-color-rgb), 0.3);
+        }
+
+        .whitepaper-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .whitepaper-content h3 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .whitepaper-content h4 {
+            color: rgba(var(--accent-color-rgb), 0.8);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .whitepaper-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 1rem 0;
+        }
+
+        .whitepaper-content ul,
+        .whitepaper-content ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .whitepaper-content li {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0.5rem 0;
+        }
+
+        .whitepaper-content code {
+            background: rgba(var(--accent-color-rgb), 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: var(--accent-color);
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .whitepaper-content pre {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            border-radius: 6px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .whitepaper-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .highlight-box {
+            background: rgba(var(--accent-color-rgb), 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box h4 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(var(--accent-color-rgb), 0.05);
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(var(--accent-color-rgb), 0.5);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        .disclaimer-box {
+            background: rgba(255, 150, 0, 0.1);
+            border: 2px solid rgba(255, 150, 0, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .disclaimer-box h4 {
+            color: #ff9500;
+            margin-top: 0;
+        }
+
+        .disclaimer-box p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .whitepaper-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .whitepaper-header .subtitle {
+                font-size: 1rem;
+            }
+
+            .whitepaper-content {
+                padding: 1.5rem;
+            }
+
+            .download-actions {
+                flex-direction: column;
+            }
+
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">SEVER.NETWORK</a>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="index.html#sever-token"><i class="fas fa-coins"></i> Token</a>
+                <a href="SEVER-Whitepaper.md" download><i class="fas fa-download"></i> Download PDF</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Whitepaper Container -->
+    <div class="whitepaper-container">
+        <!-- Header -->
+        <div class="whitepaper-header">
+            <h1>SEVER Network Whitepaper</h1>
+            <p class="subtitle">Decentralized Energy Trading Platform on Polygon</p>
+            <div class="version-info">
+                <span><i class="fas fa-tag"></i> Version 1.0</span>
+                <span><i class="fas fa-calendar"></i> Published: January 2025</span>
+                <span><i class="fas fa-globe"></i> SEVER Token</span>
+            </div>
+        </div>
+
+        <!-- Download Actions -->
+        <div class="download-actions">
+            <a href="SEVER-Whitepaper.md" download class="download-btn">
+                <i class="fas fa-download"></i> Download Whitepaper
+            </a>
+            <a href="index.html#sever-token" class="download-btn secondary">
+                <i class="fas fa-coins"></i> View Token Info
+            </a>
+            <a href="https://quickswap.exchange/#/swap?outputCurrency=0x7C58441f45E95EA5A1E40B51B1f89799d405a1B1"
+               target="_blank"
+               class="download-btn secondary">
+                <i class="fas fa-exchange-alt"></i> Buy on QuickSwap
+            </a>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="table-of-contents">
+            <h2><i class="fas fa-list"></i> Table of Contents</h2>
+            <ol>
+                <li><a href="#executive-summary">Executive Summary</a></li>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#market-analysis">Market Analysis</a></li>
+                <li><a href="#vision">The SEVER Network Vision</a></li>
+                <li><a href="#technical-architecture">Technical Architecture</a></li>
+                <li><a href="#token-economics">SEVER Token Economics</a></li>
+                <li><a href="#platform-features">Platform Features</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#team">Team & Advisors</a></li>
+                <li><a href="#legal">Legal & Compliance</a></li>
+                <li><a href="#risks">Risk Factors</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ol>
+        </div>
+
+        <!-- Whitepaper Content -->
+        <div class="whitepaper-content">
+            <h2 id="executive-summary">Executive Summary</h2>
+
+            <p>The global energy market is undergoing a fundamental transformation. The shift toward renewable energy sources, coupled with the democratization of energy production through distributed generation, creates unprecedented opportunities for innovation in energy trading and management.</p>
+
+            <p>SEVER Network introduces a revolutionary blockchain-based platform that enables peer-to-peer energy trading, tokenization of energy assets, and transparent market operations on the Polygon blockchain. By leveraging smart contracts and decentralized finance (DeFi) principles, SEVER Network eliminates intermediaries, reduces transaction costs, and empowers energy producers and consumers to participate directly in energy markets.</p>
+
+            <div class="highlight-box">
+                <h4>Key Highlights</h4>
+                <ul>
+                    <li><strong>Decentralized Energy Trading:</strong> Peer-to-peer marketplace for renewable energy</li>
+                    <li><strong>Polygon-Based Infrastructure:</strong> Low-cost, high-speed transactions</li>
+                    <li><strong>Token Utility:</strong> SEVER tokens facilitate all platform transactions</li>
+                    <li><strong>Transparent Operations:</strong> All transactions recorded on-chain</li>
+                    <li><strong>Scalable Solution:</strong> Designed to support millions of energy prosumers</li>
+                    <li><strong>Environmental Impact:</strong> Promoting renewable energy adoption globally</li>
+                </ul>
+            </div>
+
+            <h2 id="introduction">Introduction</h2>
+
+            <h3>1.1 Background</h3>
+            <p>The traditional energy sector operates through centralized infrastructure with multiple intermediaries between producers and consumers. This model creates inefficiencies, high costs, and barriers to entry for renewable energy producers. Meanwhile, the rise of distributed energy resources (DER) such as rooftop solar, wind turbines, and battery storage systems has created millions of small-scale energy producers who lack efficient market access.</p>
+
+            <h3>1.2 The Problem</h3>
+            <p><strong>Current Energy Market Challenges:</strong></p>
+            <ol>
+                <li><strong>Centralized Control:</strong> Energy markets controlled by utilities and grid operators</li>
+                <li><strong>High Transaction Costs:</strong> Multiple intermediaries add layers of fees</li>
+                <li><strong>Limited Market Access:</strong> Small producers cannot easily sell excess energy</li>
+                <li><strong>Lack of Transparency:</strong> Opaque pricing and settlement processes</li>
+                <li><strong>Inefficient Grid Management:</strong> Poor real-time balancing mechanisms</li>
+                <li><strong>Complex Regulations:</strong> Difficult compliance requirements</li>
+                <li><strong>Limited Consumer Choice:</strong> Consumers cannot choose energy sources</li>
+            </ol>
+
+            <h3>1.3 The SEVER Solution</h3>
+            <p>SEVER Network addresses these challenges through:</p>
+            <ul>
+                <li><strong>Blockchain-Based Trading Platform:</strong> Transparent, automated energy transactions</li>
+                <li><strong>Smart Contract Automation:</strong> Reduced intermediaries and costs</li>
+                <li><strong>Tokenized Energy Assets:</strong> Fractional ownership and trading</li>
+                <li><strong>Real-Time Settlement:</strong> Instant payment and energy delivery verification</li>
+                <li><strong>Decentralized Governance:</strong> Community-driven platform evolution</li>
+                <li><strong>Cross-Border Trading:</strong> International energy market access</li>
+                <li><strong>AI-Powered Optimization:</strong> Machine learning for grid balancing</li>
+            </ul>
+
+            <h2 id="market-analysis">Market Analysis</h2>
+
+            <h3>2.1 Global Energy Market Overview</h3>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value">$6T+</span>
+                    <span class="stat-label">Global Energy Market</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">$1.5T</span>
+                    <span class="stat-label">Renewable Energy Sector</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">$500B</span>
+                    <span class="stat-label">Energy Storage by 2030</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">$18B</span>
+                    <span class="stat-label">Blockchain in Energy by 2025</span>
+                </div>
+            </div>
+
+            <h3>2.2 Renewable Energy Growth</h3>
+            <p><strong>Key Trends:</strong></p>
+            <ul>
+                <li>Solar capacity growing 20% annually</li>
+                <li>Wind power expanding across 100+ countries</li>
+                <li>Battery storage costs declining 85% since 2010</li>
+                <li>Electric vehicle adoption accelerating globally</li>
+                <li>Grid modernization investments exceeding $100 billion annually</li>
+            </ul>
+
+            <h2 id="vision">The SEVER Network Vision</h2>
+
+            <h3>3.1 Mission Statement</h3>
+            <div class="highlight-box">
+                <p>"To democratize energy markets through blockchain technology, enabling transparent, efficient, and sustainable peer-to-peer energy trading globally."</p>
+            </div>
+
+            <h3>3.2 Core Principles</h3>
+            <ol>
+                <li><strong>Decentralization:</strong> No single point of control or failure</li>
+                <li><strong>Transparency:</strong> All transactions visible and auditable</li>
+                <li><strong>Sustainability:</strong> Promoting renewable energy adoption</li>
+                <li><strong>Accessibility:</strong> Low barriers to entry for all participants</li>
+                <li><strong>Efficiency:</strong> Minimal transaction costs and friction</li>
+                <li><strong>Innovation:</strong> Continuous technological advancement</li>
+                <li><strong>Community:</strong> Stakeholder-driven governance</li>
+            </ol>
+
+            <h2 id="technical-architecture">Technical Architecture</h2>
+
+            <h3>4.1 Blockchain Infrastructure</h3>
+            <p><strong>Polygon Network Selection:</strong></p>
+            <p>SEVER Network operates on Polygon (formerly Matic) for the following reasons:</p>
+            <ul>
+                <li><strong>Scalability:</strong> 65,000+ transactions per second</li>
+                <li><strong>Low Costs:</strong> Transaction fees &lt; $0.01</li>
+                <li><strong>Ethereum Compatibility:</strong> Full EVM support</li>
+                <li><strong>Security:</strong> Secured by Ethereum mainnet</li>
+                <li><strong>Speed:</strong> 2-second block confirmation times</li>
+                <li><strong>Ecosystem:</strong> Rich DeFi and dApp environment</li>
+            </ul>
+
+            <h3>4.2 Smart Contract Architecture</h3>
+            <p><strong>Core Smart Contracts:</strong></p>
+
+            <div class="highlight-box">
+                <h4>1. SEVER Token Contract (ERC-20)</h4>
+                <ul>
+                    <li>Token standard: ERC-20</li>
+                    <li>Total supply: 1,000,000,000 SEVER</li>
+                    <li>Decimals: 18</li>
+                    <li>Features: Burnable, Pausable</li>
+                    <li>Contract: <code>0x7C58441f45E95EA5A1E40B51B1f89799d405a1B1</code></li>
+                </ul>
+            </div>
+
+            <h2 id="token-economics">SEVER Token Economics</h2>
+
+            <h3>5.1 Token Overview</h3>
+            <p><strong>Token Details:</strong></p>
+            <ul>
+                <li><strong>Name:</strong> Sever.network</li>
+                <li><strong>Symbol:</strong> SEVER</li>
+                <li><strong>Type:</strong> ERC-20 (Polygon)</li>
+                <li><strong>Total Supply:</strong> 1,000,000,000 SEVER</li>
+                <li><strong>Decimals:</strong> 18</li>
+                <li><strong>Contract Address:</strong> <code>0x7C58441f45E95EA5A1E40B51B1f89799d405a1B1</code></li>
+            </ul>
+
+            <h3>5.2 Token Distribution</h3>
+            <pre><code>Total Supply: 1,000,000,000 SEVER
+
+Distribution:
+├── Public Sale (30%): 300,000,000 SEVER
+├── Liquidity Pools (25%): 250,000,000 SEVER
+├── Ecosystem Development (20%): 200,000,000 SEVER
+├── Team & Advisors (15%): 150,000,000 SEVER (24-month vesting)
+├── Strategic Partnerships (5%): 50,000,000 SEVER
+└── Reserve Fund (5%): 50,000,000 SEVER</code></pre>
+
+            <h3>5.3 Token Utility</h3>
+            <p><strong>Primary Use Cases:</strong></p>
+            <ol>
+                <li><strong>Transaction Fees:</strong> Platform trading fees paid in SEVER</li>
+                <li><strong>Staking & Governance:</strong> Stake SEVER to vote on proposals</li>
+                <li><strong>Liquidity Mining:</strong> Rewards for providing liquidity</li>
+                <li><strong>Access & Premium Features:</strong> Advanced trading tools</li>
+                <li><strong>Energy Asset Backing:</strong> Collateral for tokenized energy assets</li>
+            </ol>
+
+            <h3>5.4 Initial Token Price & Market Cap</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value">$0.03</span>
+                    <span class="stat-label">Initial Price (USD)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">$30M</span>
+                    <span class="stat-label">Fully Diluted Valuation</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">300M</span>
+                    <span class="stat-label">Circulating at Launch</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">$9M</span>
+                    <span class="stat-label">Initial Market Cap</span>
+                </div>
+            </div>
+
+            <h2 id="platform-features">Platform Features</h2>
+
+            <h3>6.1 Peer-to-Peer Energy Trading</h3>
+            <p><strong>Functionality:</strong></p>
+            <ul>
+                <li>Real-time energy marketplace</li>
+                <li>Automated order matching</li>
+                <li>Dynamic pricing algorithms</li>
+                <li>Smart contract settlement</li>
+                <li>Multi-source energy support (solar, wind, hydro, storage)</li>
+            </ul>
+
+            <h3>6.2 Energy Asset Tokenization</h3>
+            <p><strong>Tokenized Assets:</strong></p>
+            <ol>
+                <li><strong>Renewable Energy Certificates (RECs):</strong> Proof of renewable energy generation</li>
+                <li><strong>Energy Production Rights:</strong> Fractional ownership of energy installations</li>
+                <li><strong>Grid Capacity Rights:</strong> Trading of grid connection capacity</li>
+            </ol>
+
+            <h2 id="use-cases">Use Cases</h2>
+
+            <h3>7.1 Residential Prosumer</h3>
+            <div class="highlight-box">
+                <h4>Scenario:</h4>
+                <p>Sarah installed 5kW solar panels on her home in Spain. She generates more energy than she consumes during sunny days.</p>
+                <h4>SEVER Solution:</h4>
+                <ul>
+                    <li>Sarah registers on SEVER Network and connects her smart meter</li>
+                    <li>Excess solar energy automatically listed for sale</li>
+                    <li>Neighbors purchase her energy directly via SEVER platform</li>
+                    <li>Transactions settled instantly in SEVER tokens</li>
+                    <li>Sarah earns 20% more than traditional feed-in tariffs</li>
+                </ul>
+            </div>
+
+            <h2 id="roadmap">Roadmap</h2>
+
+            <h3>Phase 1: Foundation (Q1-Q2 2025) ✅</h3>
+            <p><strong>Completed:</strong></p>
+            <ul>
+                <li>✓ Smart contract development and deployment</li>
+                <li>✓ Security audit and Sourcify verification</li>
+                <li>✓ SEVER token launch on Polygon</li>
+                <li>✓ QuickSwap liquidity pool establishment</li>
+                <li>✓ Website and documentation launch</li>
+                <li>✓ Initial community building</li>
+            </ul>
+
+            <h3>Phase 2: Platform Development (Q3-Q4 2025)</h3>
+            <p><strong>Planned:</strong></p>
+            <ul>
+                <li>Trading platform alpha release</li>
+                <li>Smart meter integration pilots (100 devices)</li>
+                <li>Mobile app beta launch (iOS & Android)</li>
+                <li>First 1,000 active traders onboarded</li>
+                <li>Partnership with 2 utilities</li>
+                <li>Developer API launch</li>
+            </ul>
+
+            <h2 id="team">Team & Advisors</h2>
+
+            <h3>8.1 Core Team</h3>
+            <div class="highlight-box">
+                <h4>Sever Silaghi - Founder & CEO</h4>
+                <ul>
+                    <li>10+ years experience in energy systems and blockchain</li>
+                    <li>Expert in renewable energy markets and distributed systems</li>
+                    <li>Led development of multiple blockchain energy projects</li>
+                    <li>Published researcher in energy tokenization</li>
+                    <li>MSc in Energy Engineering, BSc in Computer Science</li>
+                </ul>
+            </div>
+
+            <h2 id="legal">Legal & Compliance</h2>
+
+            <h3>9.1 Regulatory Framework</h3>
+            <p><strong>Token Classification:</strong></p>
+            <ul>
+                <li>SEVER is a utility token designed for platform usage</li>
+                <li>Not intended as a security or investment vehicle</li>
+                <li>Provides access to platform features and services</li>
+                <li>Compliance with local securities laws in all jurisdictions</li>
+            </ul>
+
+            <h2 id="risks">Risk Factors</h2>
+
+            <h3>10.1 Technology Risks</h3>
+            <p><strong>Blockchain Risks:</strong></p>
+            <ul>
+                <li>Smart contract vulnerabilities</li>
+                <li>Polygon network issues or downtime</li>
+                <li>Scalability limitations</li>
+            </ul>
+
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+                <li>Regular security audits</li>
+                <li>Bug bounty programs</li>
+                <li>Multi-layer security architecture</li>
+                <li>Emergency pause mechanisms</li>
+            </ul>
+
+            <h2 id="conclusion">Conclusion</h2>
+
+            <p>SEVER Network represents a paradigm shift in how energy is traded, managed, and valued in the digital age. By combining blockchain technology, smart contracts, and renewable energy infrastructure, we are creating a more efficient, transparent, and sustainable energy ecosystem.</p>
+
+            <div class="highlight-box">
+                <h4>Key Takeaways</h4>
+                <ol>
+                    <li><strong>Market Opportunity:</strong> $6 trillion global energy market undergoing digital transformation</li>
+                    <li><strong>Technical Innovation:</strong> Polygon-based platform with low costs and high scalability</li>
+                    <li><strong>Token Utility:</strong> SEVER token integral to all platform operations</li>
+                    <li><strong>Real-World Impact:</strong> Promoting renewable energy adoption and grid efficiency</li>
+                    <li><strong>Strong Foundation:</strong> Verified smart contracts, liquidity, and growing community</li>
+                    <li><strong>Clear Roadmap:</strong> Phased approach to global platform deployment</li>
+                </ol>
+            </div>
+
+            <h3>Vision for the Future</h3>
+            <p>By 2030, SEVER Network aims to:</p>
+            <ul>
+                <li>Facilitate $1 billion+ in annual energy transactions</li>
+                <li>Support 1 million+ energy prosumers globally</li>
+                <li>Reduce carbon emissions by promoting renewable trading</li>
+                <li>Establish blockchain energy trading as industry standard</li>
+                <li>Democratize access to energy markets worldwide</li>
+            </ul>
+
+            <div class="disclaimer-box">
+                <h4><i class="fas fa-exclamation-triangle"></i> Disclaimer</h4>
+                <p>This whitepaper is for informational purposes only and does not constitute investment advice, financial advice, trading advice, or any other sort of advice. SEVER tokens are utility tokens for use within the SEVER Network platform. Do not treat this whitepaper or any part of it as a prospectus or offering document.</p>
+                <p>The information in this whitepaper is subject to change as the project evolves. SEVER Network makes no warranties or representations about the accuracy or completeness of information provided. Participation in cryptocurrency and blockchain projects involves substantial risk. Only invest what you can afford to lose.</p>
+                <p>Always conduct your own research (DYOR) and consult with qualified financial, legal, and tax advisors before making any investment decisions.</p>
+            </div>
+
+            <div style="text-align: center; margin: 3rem 0; padding: 2rem; border-top: 2px solid rgba(var(--accent-color-rgb), 0.3);">
+                <p style="color: var(--accent-color); font-weight: 600;">Copyright © 2025 Sever.network. All rights reserved.</p>
+                <p style="color: rgba(255, 255, 255, 0.6);">Version 1.0 | Last Updated: January 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script>
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.table-of-contents a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

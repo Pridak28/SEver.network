@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Preview - SEVER Network</title>
+
+    <!-- Test the new favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon-new.svg">
+
+    <style>
+        :root {
+            --bg-color: #000;
+            --text-color: #fff;
+            --accent-color: #00ffff;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Source Code Pro', monospace;
+            padding: 40px;
+            margin: 0;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .favicon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .favicon-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .favicon-card h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .favicon-display {
+            background: #0a0a0a;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .favicon-display.light {
+            background: #f0f0f0;
+        }
+
+        .size-variants {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .size-variant {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .size-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .favicon-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: left;
+        }
+
+        .favicon-info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .favicon-info li {
+            margin: 5px 0;
+        }
+
+        .implementation-code {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 30px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
+        .implementation-code pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .recommendation {
+            background: rgba(0, 255, 255, 0.1);
+            border-left: 3px solid var(--accent-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .recommendation h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SEVER Network - Favicon Preview</h1>
+
+    <div class="favicon-grid">
+        <!-- Lightning Bolt Design -->
+        <div class="favicon-card">
+            <h2>⚡ Lightning Energy</h2>
+            <div class="favicon-display">
+                <img src="favicon-bolt.svg" width="64" height="64" alt="Lightning bolt favicon">
+            </div>
+            <div class="size-variants">
+                <div class="size-variant">
+                    <img src="favicon-bolt.svg" width="16" height="16" alt="16x16">
+                    <span class="size-label">16x16</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-bolt.svg" width="32" height="32" alt="32x32">
+                    <span class="size-label">32x32</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-bolt.svg" width="48" height="48" alt="48x48">
+                    <span class="size-label">48x48</span>
+                </div>
+            </div>
+            <div class="favicon-info">
+                <strong>Concept:</strong>
+                <ul>
+                    <li>Bold lightning bolt design</li>
+                    <li>Direct energy symbolism</li>
+                    <li>High impact at small sizes</li>
+                    <li>Clean, modern aesthetic</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Network Nodes Design -->
+        <div class="favicon-card">
+            <h2>🔗 Network Nodes</h2>
+            <div class="favicon-display">
+                <img src="favicon-network.svg" width="64" height="64" alt="Network nodes favicon">
+            </div>
+            <div class="size-variants">
+                <div class="size-variant">
+                    <img src="favicon-network.svg" width="16" height="16" alt="16x16">
+                    <span class="size-label">16x16</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-network.svg" width="32" height="32" alt="32x32">
+                    <span class="size-label">32x32</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-network.svg" width="48" height="48" alt="48x48">
+                    <span class="size-label">48x48</span>
+                </div>
+            </div>
+            <div class="favicon-info">
+                <strong>Concept:</strong>
+                <ul>
+                    <li>Interconnected network nodes</li>
+                    <li>Blockchain/P2P representation</li>
+                    <li>Decentralized system visual</li>
+                    <li>8-node radial pattern</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Hexagon Blockchain Design -->
+        <div class="favicon-card">
+            <h2>⬡ Blockchain Hexagon</h2>
+            <div class="favicon-display">
+                <img src="favicon-hexagon.svg" width="64" height="64" alt="Hexagon blockchain favicon">
+            </div>
+            <div class="size-variants">
+                <div class="size-variant">
+                    <img src="favicon-hexagon.svg" width="16" height="16" alt="16x16">
+                    <span class="size-label">16x16</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-hexagon.svg" width="32" height="32" alt="32x32">
+                    <span class="size-label">32x32</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-hexagon.svg" width="48" height="48" alt="48x48">
+                    <span class="size-label">48x48</span>
+                </div>
+            </div>
+            <div class="favicon-info">
+                <strong>Concept:</strong>
+                <ul>
+                    <li>Hexagon blockchain symbol</li>
+                    <li>Integrated lightning element</li>
+                    <li>Circuit node accents</li>
+                    <li>Energy + blockchain fusion</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- S Lettermark Design -->
+        <div class="favicon-card">
+            <h2>Ⓢ "S" Lettermark</h2>
+            <div class="favicon-display">
+                <img src="favicon-lettermark.svg" width="64" height="64" alt="S lettermark favicon">
+            </div>
+            <div class="size-variants">
+                <div class="size-variant">
+                    <img src="favicon-lettermark.svg" width="16" height="16" alt="16x16">
+                    <span class="size-label">16x16</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-lettermark.svg" width="32" height="32" alt="32x32">
+                    <span class="size-label">32x32</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon-lettermark.svg" width="48" height="48" alt="48x48">
+                    <span class="size-label">48x48</span>
+                </div>
+            </div>
+            <div class="favicon-info">
+                <strong>Concept:</strong>
+                <ul>
+                    <li>Stylized "S" for SEVER</li>
+                    <li>Tech circuit aesthetic</li>
+                    <li>Strong brand identity</li>
+                    <li>Energy flow visualization</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Original for Comparison -->
+        <div class="favicon-card">
+            <h2>Current Favicon</h2>
+            <div class="favicon-display">
+                <img src="favicon.svg" width="64" height="64" alt="Current favicon">
+            </div>
+            <div class="size-variants">
+                <div class="size-variant">
+                    <img src="favicon.svg" width="16" height="16" alt="16x16">
+                    <span class="size-label">16x16</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon.svg" width="32" height="32" alt="32x32">
+                    <span class="size-label">32x32</span>
+                </div>
+                <div class="size-variant">
+                    <img src="favicon.svg" width="48" height="48" alt="48x48">
+                    <span class="size-label">48x48</span>
+                </div>
+            </div>
+            <div class="favicon-info">
+                <strong>Current Design:</strong>
+                <ul>
+                    <li>Simple infinity-like shape</li>
+                    <li>Basic gradient effect</li>
+                    <li>Less distinctive branding</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Light Background Test -->
+        <div class="favicon-card">
+            <h2>Light Background Test</h2>
+            <div class="favicon-display light" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <img src="favicon-bolt.svg" width="32" height="32" alt="Bolt on light">
+                <img src="favicon-network.svg" width="32" height="32" alt="Network on light">
+                <img src="favicon-hexagon.svg" width="32" height="32" alt="Hexagon on light">
+                <img src="favicon-lettermark.svg" width="32" height="32" alt="Lettermark on light">
+            </div>
+            <div class="favicon-info">
+                <strong>Visibility Test:</strong>
+                <p>All designs maintain excellent visibility on light backgrounds thanks to dark circular backgrounds.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="recommendation">
+        <h3>Recommendation</h3>
+        <p>The new favicon better represents the SEVER Network brand with:</p>
+        <ul>
+            <li>✓ Clear "S" branding for SEVER</li>
+            <li>✓ Energy/blockchain theme matching the website</li>
+            <li>✓ Cyan color scheme consistent with site design</li>
+            <li>✓ Tech aesthetic with circuit patterns</li>
+            <li>✓ Both animated and static versions for compatibility</li>
+        </ul>
+    </div>
+
+    <div class="implementation-code">
+        <h3 style="color: #00ffff; margin-bottom: 15px;">Implementation Code</h3>
+        <pre>&lt;!-- Replace the existing favicon line in index.html with: --&gt;
+
+&lt;!-- For modern browsers with animation support --&gt;
+&lt;link rel="icon" type="image/svg+xml" href="favicon-new.svg"&gt;
+
+&lt;!-- Or for better compatibility (no animations) --&gt;
+&lt;link rel="icon" type="image/svg+xml" href="favicon-static.svg"&gt;
+
+&lt;!-- For complete browser support, add these lines: --&gt;
+&lt;link rel="icon" type="image/svg+xml" href="favicon-new.svg"&gt;
+&lt;link rel="alternate icon" href="favicon.ico"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"&gt;</pre>
+    </div>
+</body>
+</html>

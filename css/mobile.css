@@ -1,0 +1,434 @@
+/* Mobile-first overrides for the landing experience */
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  body.mobile-bg-gradient {
+    background: #02070c;
+  }
+
+  #navbar {
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 12px 0;
+    backdrop-filter: blur(16px);
+  }
+
+  .nav-container {
+    padding: 0 16px;
+    justify-content: space-between;
+  }
+
+  .nav-container.center-aligned {
+    justify-content: space-between;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--accent-color-rgb, 0, 255, 255), 0.35);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--accent-color);
+  }
+
+  .hamburger-menu.active {
+    background: rgba(var(--accent-color-rgb, 0, 255, 255), 0.2);
+    color: #fff;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 72px;
+    right: 16px;
+    left: 16px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(8, 15, 22, 0.82);
+    border: 1px solid rgba(var(--accent-color-rgb, 0, 255, 255), 0.35);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    z-index: 1200;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    display: flex;
+  }
+
+  .nav-menu a,
+  .nav-menu button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    font-size: 1rem;
+  }
+
+  .nav-menu a:hover,
+  .nav-menu button:hover,
+  .nav-menu a:focus-visible,
+  .nav-menu button:focus-visible {
+    border-color: rgba(var(--accent-color-rgb, 0, 255, 255), 0.45);
+    background: rgba(var(--accent-color-rgb, 0, 255, 255), 0.15);
+  }
+
+  .nav-menu .navbar-whitepaper,
+  .nav-menu .navbar-connect {
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .container {
+    width: 100%;
+    margin: 96px auto 32px;
+    padding: 0 18px;
+  }
+
+  section {
+    padding: 32px 0;
+    margin-bottom: 32px;
+  }
+
+  .section-description {
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .hero-content {
+    gap: 24px;
+    padding: 0;
+  }
+
+  .hero-header {
+    gap: 20px;
+  }
+
+  .hero-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .energy-stats-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .stat-item {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 16px 12px;
+  }
+
+  .token-hero {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .token-hero-info {
+    width: 100%;
+  }
+
+  .token-info-panel {
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .token-info-panel .contract-address {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .features-grid,
+  .token-stats-grid,
+  .steps-container,
+  .address-cards,
+  .links-grid,
+  .tokenomics-grid,
+  .security-features,
+  .metrics-visualization,
+  .flex-fund-dashboard,
+  .project-specs,
+  .specs-primary,
+  .specs-detail,
+  .energy-sources,
+  .distribution-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .wallet-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .market-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .market-stats {
+    text-align: left;
+  }
+
+  .transaction-type-toggle {
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .transaction-type-btn {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .transaction-type-btn:last-child {
+    border-bottom: none;
+  }
+
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .blockchain-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .blockchain-block {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .timeline-axis,
+  .timeline-track,
+  .timeline-node:nth-child(odd) .node-content::before,
+  .timeline-node:nth-child(even) .node-content::before,
+  .node-dot {
+    display: none;
+  }
+
+  .timeline-node .node-content {
+    margin: 0;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .calculator-container,
+  .dashboard-container,
+  .simulator-container,
+  .assistant-interface {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+
+  .assistant-sidebar {
+    order: -1;
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .social-icons {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .contact-form-container form {
+    padding: 20px;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  /* ==========================================
+     TRANSPARENT BACKGROUNDS FOR ANIMATION
+  ========================================== */
+
+  /* Token section components - semi-transparent */
+  .token-container,
+  .token-info,
+  .token-details,
+  .sever-token-section {
+    background: rgba(0, 0, 0, 0.22) !important;
+  }
+
+  /* Battery & Fund components - semi-transparent */
+  .battery-container,
+  .flex-fund-container,
+  .fund-panel,
+  .battery-panel {
+    background: rgba(0, 0, 0, 0.22) !important;
+  }
+
+  /* Financial components - semi-transparent */
+  .snapshot-card,
+  .financial-card,
+  .metric-card {
+    background: rgba(0, 0, 0, 0.22) !important;
+  }
+
+  /* Keep card borders but make backgrounds see-through */
+  .card,
+  .panel,
+  .info-card {
+    background: rgba(0, 0, 0, 0.22) !important;
+    backdrop-filter: blur(5px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #navbar {
+    padding: 10px 0;
+  }
+
+  .nav-menu {
+    top: 58px;
+    right: 12px;
+    left: 12px;
+    padding: 18px;
+  }
+
+  .token-hero {
+    padding: 20px;
+  }
+
+  .token-info-panel,
+  .contact-form-container form {
+    padding: 18px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-btn {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  /* ==========================================
+     TRANSPARENT BACKGROUNDS FOR ANIMATION
+  ========================================== */
+
+  /* Token section components - semi-transparent */
+  .token-container,
+  .token-info,
+  .token-details,
+  .sever-token-section {
+    background: rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Battery & Fund components - semi-transparent */
+  .battery-container,
+  .flex-fund-container,
+  .fund-panel,
+  .battery-panel {
+    background: rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Financial components - semi-transparent */
+  .snapshot-card,
+  .financial-card,
+  .metric-card {
+    background: rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Keep card borders but make backgrounds see-through */
+  .card,
+  .panel,
+  .info-card {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(5px) !important;
+  }
+}
+
+/* ==========================================
+   LANDSCAPE MOBILE ORIENTATION
+========================================== */
+@media (max-width: 900px) and (orientation: landscape) {
+  #navbar {
+    padding: 8px 0 !important;
+  }
+
+  .nav-menu {
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+}

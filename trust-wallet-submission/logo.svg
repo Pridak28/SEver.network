@@ -1,0 +1,66 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#001a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0" />
+    </radialGradient>
+    <linearGradient id="sGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00cc99;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="128" fill="url(#bgGradient)"/>
+
+  <!-- Glow effect -->
+  <circle cx="128" cy="128" r="110" fill="url(#glowGradient)"/>
+
+  <!-- Outer ring -->
+  <circle cx="128" cy="128" r="115" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.3"/>
+
+  <!-- Main "S" lettermark - larger and bolder -->
+  <path d="M 160 72 C 160 72 136 56 104 72 C 72 88 72 104 72 104 C 72 104 72 120 104 128 C 136 136 152 136 152 136 C 152 136 184 144 184 168 C 184 192 160 208 128 208 C 96 208 72 192 72 192"
+        stroke="url(#sGradient)"
+        stroke-width="18"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+
+  <!-- Inner glow for depth -->
+  <path d="M 160 72 C 160 72 136 56 104 72 C 72 88 72 104 72 104 C 72 104 72 120 104 128 C 136 136 152 136 152 136 C 152 136 184 144 184 168 C 184 192 160 208 128 208 C 96 208 72 192 72 192"
+        stroke="#00ffff"
+        stroke-width="28"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        opacity="0.15"/>
+
+  <!-- Circuit nodes for tech aesthetic -->
+  <circle cx="104" cy="76" r="8" fill="#00ffff" opacity="0.8"/>
+  <circle cx="128" cy="128" r="8" fill="#00ffff" opacity="0.8"/>
+  <circle cx="128" cy="200" r="8" fill="#00ffff" opacity="0.8"/>
+
+  <!-- Small accent dots at corners -->
+  <circle cx="40" cy="40" r="4" fill="#00ffff" opacity="0.4"/>
+  <circle cx="216" cy="40" r="4" fill="#00ffff" opacity="0.4"/>
+  <circle cx="40" cy="216" r="4" fill="#00ffff" opacity="0.4"/>
+  <circle cx="216" cy="216" r="4" fill="#00ffff" opacity="0.4"/>
+
+  <!-- Additional circuit lines for detail -->
+  <line x1="40" y1="40" x2="60" y2="60" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+  <line x1="216" y1="40" x2="196" y2="60" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+  <line x1="40" y1="216" x2="60" y2="196" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+  <line x1="216" y1="216" x2="196" y2="196" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+
+  <!-- Hexagon pattern subtle background -->
+  <g opacity="0.05" stroke="#00ffff" stroke-width="1" fill="none">
+    <polygon points="128,60 158,75 158,105 128,120 98,105 98,75"/>
+    <polygon points="128,136 158,151 158,181 128,196 98,181 98,151"/>
+  </g>
+</svg>

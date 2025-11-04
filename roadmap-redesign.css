@@ -1,0 +1,379 @@
+/**
+ * ROADMAP REDESIGN - Match Website Terminal Style
+ * Removes excessive glow effects and applies consistent panel styling
+ */
+
+/* Override existing roadmap styles */
+.roadmap-container {
+  margin-top: 30px;
+  background: none;
+}
+
+.roadmap-timeline {
+  border-left: 2px solid rgba(var(--accent-color-rgb), 0.3);
+  padding-left: 40px;
+  position: relative;
+  background: none;
+}
+
+.roadmap-phase {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* Phase connector - Clean minimal dots */
+.phase-connector {
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.connector-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  box-shadow: none !important; /* Remove glow */
+  border: 2px solid var(--bg-color);
+  transition: transform 0.3s ease;
+}
+
+.connector-line {
+  width: 2px;
+  height: 100%;
+  background: rgba(var(--accent-color-rgb), 0.3);
+  margin-top: 4px;
+  border-radius: 0;
+  box-shadow: none !important; /* Remove glow */
+}
+
+/* Active phase pulse animation - subtle */
+.roadmap-phase.in-progress .connector-dot {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* Phase content - Match website panel style */
+.phase-content {
+  background: rgba(var(--accent-color-rgb), 0.03) !important;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.2) !important;
+  box-shadow: none !important; /* Remove glow */
+  padding: 20px;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.phase-content:hover {
+  background: rgba(var(--accent-color-rgb), 0.05) !important;
+  border-color: rgba(var(--accent-color-rgb), 0.4) !important;
+}
+
+/* Phase header */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.phase-tag {
+  color: var(--accent-color);
+  opacity: 1;
+  font-size: 0.85em;
+  font-family: var(--mono-font);
+  padding: 4px 8px;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+}
+
+.phase-status {
+  color: var(--text-color);
+  opacity: 0.6;
+  font-size: 0.85em;
+  font-family: var(--mono-font);
+  margin-left: auto;
+}
+
+/* Phase title */
+.phase-title {
+  color: var(--text-color);
+  font-size: 1.4rem;
+  font-family: var(--header-font);
+  margin-bottom: 15px;
+  text-shadow: none !important; /* Remove glow */
+  font-weight: 600;
+}
+
+/* Phase details */
+.phase-details {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  margin-top: 15px;
+  opacity: 0.9;
+}
+
+/* Milestone cards - Match website panel style */
+.milestone-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background: rgba(var(--accent-color-rgb), 0.05) !important;
+  border-radius: 6px;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.2) !important;
+  box-shadow: none !important; /* Remove glow */
+  margin-bottom: 12px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.milestone-card:hover {
+  background: rgba(var(--accent-color-rgb), 0.08) !important;
+  border-color: rgba(var(--accent-color-rgb), 0.4) !important;
+}
+
+.milestone-icon {
+  font-size: 1.2em;
+  color: var(--accent-color);
+  margin-right: 0;
+  min-width: 20px;
+}
+
+.milestone-info h4 {
+  color: var(--text-color);
+  font-size: 1em;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.milestone-info p {
+  color: var(--text-color);
+  font-size: 0.9em;
+  opacity: 0.7;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.milestone-date {
+  color: var(--accent-color);
+  font-size: 0.85em;
+  font-family: var(--mono-font);
+  margin-left: auto;
+  opacity: 1;
+  white-space: nowrap;
+  padding: 4px 8px;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Progress indicator */
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 6px;
+  width: 100px;
+  background: rgba(var(--accent-color-rgb), 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+}
+
+.progress-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: var(--progress, 65%);
+  background: var(--accent-color);
+  border-radius: 2px;
+  box-shadow: none !important; /* Remove glow */
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  color: var(--text-color);
+  font-size: 0.85em;
+  opacity: 0.7;
+  font-family: var(--mono-font);
+}
+
+/* Phase status variations - subtle color coding */
+.roadmap-phase.completed .phase-tag {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+}
+
+.roadmap-phase.completed .connector-dot {
+  background: #00ff00;
+}
+
+.roadmap-phase.in-progress .phase-tag {
+  background: rgba(255, 200, 0, 0.1);
+  border-color: rgba(255, 200, 0, 0.3);
+  color: #ffc800;
+}
+
+.roadmap-phase.in-progress .connector-dot {
+  background: #ffc800;
+}
+
+.roadmap-phase.upcoming .phase-tag {
+  background: rgba(var(--accent-color-rgb), 0.1);
+  border-color: rgba(var(--accent-color-rgb), 0.3);
+  color: var(--accent-color);
+}
+
+.roadmap-phase.future .phase-tag {
+  background: rgba(150, 150, 150, 0.1);
+  border-color: rgba(150, 150, 150, 0.3);
+  color: #999;
+}
+
+.roadmap-phase.future .connector-dot {
+  background: #999;
+}
+
+/* Light mode adjustments */
+body.light-mode .phase-content {
+  background: rgba(var(--accent-color-rgb), 0.05) !important;
+  border-color: rgba(var(--accent-color-rgb), 0.3) !important;
+}
+
+body.light-mode .milestone-card {
+  background: rgba(var(--accent-color-rgb), 0.08) !important;
+  border-color: rgba(var(--accent-color-rgb), 0.3) !important;
+}
+
+body.light-mode .connector-dot {
+  border-color: var(--bg-color);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .roadmap-timeline {
+    padding-left: 25px;
+    border-left-width: 2px;
+  }
+
+  .phase-connector {
+    left: -25px;
+  }
+
+  .phase-content {
+    padding: 15px;
+  }
+
+  .phase-title {
+    font-size: 1.2rem;
+  }
+
+  .milestone-card {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .milestone-date {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+
+  .progress-bar {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .roadmap-timeline {
+    padding-left: 20px;
+  }
+
+  .phase-connector {
+    left: -20px;
+  }
+
+  .connector-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .phase-content {
+    padding: 12px;
+  }
+
+  .phase-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .phase-status {
+    margin-left: 0;
+  }
+}
+
+/* Remove all theme-white overrides - use standard theming */
+body.theme-white .phase-content,
+body.theme-white .milestone-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none !important;
+}
+
+body.theme-white .phase-header,
+body.theme-white .phase-title,
+body.theme-white .milestone-info h4 {
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+body.theme-white .connector-dot {
+  background: #fff !important;
+  box-shadow: none !important;
+  border: 2px solid var(--bg-color);
+}
+
+body.theme-white .milestone-date {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none !important;
+}
+
+body.theme-white .connector-line {
+  background: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none !important;
+}
+
+body.theme-white .progress-bar::after {
+  background: #fff !important;
+  box-shadow: none !important;
+}
