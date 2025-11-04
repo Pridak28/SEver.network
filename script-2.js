@@ -651,6 +651,9 @@ function initMobileNavigation() {
     hamburgerMenu.classList.remove("active");
     hamburgerMenu.setAttribute("aria-expanded", "false");
     syncMenuVisibility();
+
+    // Remove menu-open class when closing menu
+    document.body.classList.remove("menu-open");
   };
 
   const toggleMenu = (event) => {
@@ -661,6 +664,13 @@ function initMobileNavigation() {
     hamburgerMenu.classList.toggle("active", isOpen);
     hamburgerMenu.setAttribute("aria-expanded", String(isOpen));
     syncMenuVisibility();
+
+    // Prevent body scroll when menu is open on mobile
+    if (isOpen) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
   };
 
   closeMenu();

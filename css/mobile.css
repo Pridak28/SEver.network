@@ -439,3 +439,256 @@
     overflow-y: auto;
   }
 }
+
+/* ==========================================
+   MOBILE TOUCH ENHANCEMENTS
+========================================== */
+@media (max-width: 768px) {
+  /* Optimize touch interactions */
+  * {
+    -webkit-tap-highlight-color: rgba(var(--accent-color-rgb, 0, 255, 255), 0.2);
+    tap-highlight-color: rgba(var(--accent-color-rgb, 0, 255, 255), 0.2);
+  }
+
+  /* Improve touch targets - minimum 44x44px */
+  button,
+  .btn,
+  .hero-btn,
+  a,
+  .nav-menu a,
+  .connect-button,
+  .social-icon,
+  .action-btn,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Better scrolling on touch devices */
+  .nav-menu,
+  .blockchain-container,
+  .transaction-list,
+  .timeline-container,
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Active state for touch feedback */
+  button.touch-active,
+  .btn.touch-active,
+  .hero-btn.touch-active,
+  .nav-menu a.touch-active,
+  .connect-button.touch-active,
+  .social-icon.touch-active,
+  .action-btn.touch-active,
+  .card.touch-active,
+  .feature-card.touch-active {
+    opacity: 0.85;
+    transform: scale(0.98);
+    transition: opacity 0.1s ease, transform 0.1s ease;
+  }
+
+  /* Prevent text selection on interactive elements during touch */
+  button,
+  .btn,
+  .hero-btn,
+  .nav-menu a,
+  .connect-button,
+  .social-icon,
+  .action-btn {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Smooth momentum scrolling for iOS */
+  body,
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix for input zoom on iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+  }
+
+  /* Improve form element touch targets */
+  input,
+  textarea,
+  select {
+    min-height: 44px;
+    padding: 12px;
+  }
+
+  /* Better touch response for links */
+  a {
+    touch-action: manipulation;
+    -webkit-touch-callout: none; /* Disable iOS callout */
+  }
+
+  /* Prevent pull-to-refresh on specific elements */
+  canvas,
+  #bgCanvas {
+    overscroll-behavior-y: contain;
+    touch-action: pan-x pan-y;
+  }
+}
+
+/* ==========================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+========================================== */
+@media (max-width: 768px) {
+  /* Reduce animations on low-end devices if preferred */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Hardware acceleration for smooth animations */
+  .nav-menu,
+  .hamburger-menu,
+  button,
+  .btn,
+  .card {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* ==========================================
+   MEDIA AND SVG RESPONSIVENESS
+========================================== */
+@media (max-width: 768px) {
+  /* Ensure all SVGs are responsive */
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure images are responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure videos are responsive */
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure iframes are responsive */
+  iframe {
+    max-width: 100%;
+  }
+
+  /* Loading overlay mobile optimization */
+  #loadingOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* Loading SVG scaling */
+  .blockchain-loading-visual svg {
+    max-width: 90%;
+    height: auto;
+  }
+}
+
+/* ==========================================
+   MOBILE NAVIGATION IMPROVEMENTS
+========================================== */
+@media (max-width: 768px) {
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Improve hamburger menu accessibility */
+  .hamburger-menu {
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(var(--accent-color-rgb, 0, 255, 255), 0.3);
+  }
+
+  /* Ensure nav menu is scrollable */
+  .nav-menu {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  /* Better spacing for nav items on small screens */
+  .nav-menu li {
+    margin: 4px 0;
+  }
+}
+
+/* ==========================================
+   MOBILE TEXT AND TYPOGRAPHY
+========================================== */
+@media (max-width: 768px) {
+  /* Prevent text overflow */
+  h1, h2, h3, h4, h5, h6, p, li, span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Improve readability */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Prevent horizontal scroll from long content */
+  pre, code {
+    max-width: 100%;
+    overflow-x: auto;
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+}
+
+/* ==========================================
+   MOBILE ACCESSIBILITY IMPROVEMENTS
+========================================== */
+@media (max-width: 768px) {
+  /* Focus visible for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+
+  /* Skip to main content link for screen readers */
+  .skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+  }
+
+  .skip-to-main:focus {
+    left: 0;
+    top: 0;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    padding: 10px 20px;
+  }
+}
