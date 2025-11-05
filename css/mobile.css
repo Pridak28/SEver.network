@@ -25,6 +25,22 @@
     background: #02070c;
   }
 
+  /* ==========================================
+     CANVAS VISIBILITY - CRITICAL FIX
+  ========================================== */
+  /* Hide background animation canvases on mobile */
+  #bgCanvas,
+  #particleCanvas {
+    display: none !important;
+  }
+
+  /* ALLOW Chart.js canvases to show - DON'T HIDE THEM */
+  canvas:not(#bgCanvas):not(#particleCanvas) {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
   #navbar {
     width: 100%;
     left: 0;
@@ -68,7 +84,7 @@
     gap: 12px;
     padding: 20px;
     border-radius: 12px;
-    background: rgba(8, 15, 22, 0.82);
+    background: rgba(8, 15, 22, 0.5);
     border: 1px solid rgba(var(--accent-color-rgb, 0, 255, 255), 0.35);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
     max-height: calc(100vh - 96px);
@@ -390,40 +406,7 @@
     padding: 12px;
   }
 
-  /* ==========================================
-     TRANSPARENT BACKGROUNDS FOR ANIMATION
-  ========================================== */
-
-  /* Token section components - semi-transparent */
-  .token-container,
-  .token-info,
-  .token-details,
-  .sever-token-section {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  /* Battery & Fund components - semi-transparent */
-  .battery-container,
-  .flex-fund-container,
-  .fund-panel,
-  .battery-panel {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  /* Financial components - semi-transparent */
-  .snapshot-card,
-  .financial-card,
-  .metric-card {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  /* Keep card borders but make backgrounds see-through */
-  .card,
-  .panel,
-  .info-card {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-  }
+  /* Transparent backgrounds already defined in 768px block above */
 }
 
 /* ==========================================
