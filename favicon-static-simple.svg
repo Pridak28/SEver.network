@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background circle -->
+  <circle cx="16" cy="16" r="15" fill="#0a0a0a" stroke="#00ffff" stroke-width="1"/>
+
+  <!-- Simplified "S" lettermark -->
+  <path d="M 20 9 C 20 9 17 7 13 9 C 9 11 9 13 9 13 C 9 13 9 15 13 16 C 17 17 19 17 19 17 C 19 17 23 18 23 21 C 23 24 20 26 16 26 C 12 26 9 24 9 24"
+        stroke="#00ffff"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        fill="none"/>
+</svg>
